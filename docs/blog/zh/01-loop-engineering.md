@@ -227,4 +227,10 @@ Google Cloud 架构中心文档明确指出 loop pattern 的主要工程风险�
 
 ---
 
+## 配图
+
+1. ![Loop Engineering 概念诞生时间线](../assets/img/01-timeline.svg)
+2. ![五大构件 + 记忆](../assets/img/01-five-blocks.svg)
+3. ![Loop / Harness / Context 三层概念栈](../assets/img/01-conceptual-stack.svg)
+
 📌 本文基于 105 个 Agent 并行调研、22 个源、108 条声明提取、25 条三票验证（22 确认 / 3 驳回）的深度研究数据撰写。

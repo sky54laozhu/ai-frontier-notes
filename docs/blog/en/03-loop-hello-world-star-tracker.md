@@ -242,6 +242,13 @@ ai-frontier-notes/
 
 ---
 
+## Diagrams
+
+1. ![Read-only vs read-write Loop comparison](../assets/img/03-read-only-vs-readwrite.svg)
+2. ![Star Tracker upgrade path](../assets/img/03-upgrade-path.svg)
+
+---
+
 📌 Reading map: [reading-map.md](../reading-map.md)
 🔗 Chinese version: [zh/03-loop-hello-world-star-tracker.md](../zh/03-loop-hello-world-star-tracker.md)
 🔗 Previous: [02 Loop Engineering in Practice](./02-loop-engineering-in-practice.md)

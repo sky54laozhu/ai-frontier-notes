@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" font-family="-apple-system, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif" font-size="14" role="img" aria-labelledby="t1 d1">
+  <title id="t1">Loop / Harness / Context 三层概念栈</title>
+  <desc id="d1">三层水平堆叠图：底层 Context Engineering 构建上下文窗口，中层 Harness Engineering 装备单次 Agent 运行，顶层 Loop Engineering 持续在调度上生成 Agent 并跨运行共享状态。越往上，自主性越高。</desc>
+  <style>
+    .layer-label { fill: #fff; font-weight: 700; font-size: 18px; }
+    .layer-sub { fill: rgba(255,255,255,.85); font-size: 13px; }
+    .anno { fill: #5a5a5a; font-size: 12px; }
+    .arrow { stroke: #1a2233; stroke-width: 2; fill: none; marker-end: url(#ah); }
+  </style>
+  <defs>
+    <marker id="ah" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#1a2233"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="720" height="420" fill="#fafbfc" rx="8"/>
+
+  <text x="360" y="32" text-anchor="middle" fill="#1a2233" font-size="16" font-weight="600">Loop Engineering 概念栈定位</text>
+
+  <!-- Layer 3: Loop Engineering -->
+  <rect x="60" y="60" width="520" height="90" rx="10" fill="#0a7c2e"/>
+  <text x="320" y="98" text-anchor="middle" class="layer-label">Layer 3: Loop Engineering</text>
+  <text x="320" y="120" text-anchor="middle" class="layer-sub">持续调度 · 跨运行状态 · 自动发现工作 · 自动验证结果</text>
+  <text x="320" y="138" text-anchor="middle" class="layer-sub">你设计系统，系统替你 prompt</text>
+
+  <!-- Layer 2: Harness Engineering -->
+  <rect x="60" y="165" width="520" height="90" rx="10" fill="#4f97ff"/>
+  <text x="320" y="203" text-anchor="middle" class="layer-label">Layer 2: Harness Engineering</text>
+  <text x="320" y="225" text-anchor="middle" class="layer-sub">上下文压缩 · 工具编排 · 沙箱 · 流式 · 断线续传</text>
+  <text x="320" y="243" text-anchor="middle" class="layer-sub">装备单次 Agent 运行</text>
+
+  <!-- Layer 1: Context Engineering -->
+  <rect x="60" y="270" width="520" height="90" rx="10" fill="#7ab2ff"/>
+  <text x="320" y="308" text-anchor="middle" class="layer-label">Layer 1: Context Engineering</text>
+  <text x="320" y="330" text-anchor="middle" class="layer-sub">System Prompt · Few-shot · RAG · 工具描述</text>
+  <text x="320" y="348" text-anchor="middle" class="layer-sub">构建正确的上下文窗口</text>
+
+  <!-- Right annotations -->
+  <line x1="610" y1="105" x2="660" y2="105" class="arrow"/>
+  <text x="668" y="100" class="anno">自主性最高</text>
+  <text x="668" y="115" class="anno">人类只设计规则</text>
+
+  <line x1="610" y1="210" x2="660" y2="210" class="arrow"/>
+  <text x="668" y="205" class="anno">单次运行</text>
+  <text x="668" y="220" class="anno">人类触发</text>
+
+  <line x1="610" y1="315" x2="660" y2="315" class="arrow"/>
+  <text x="668" y="310" class="anno">单次调用</text>
+  <text x="668" y="325" class="anno">人类构造</text>
+
+  <!-- Bottom note -->
+  <text x="360" y="395" text-anchor="middle" class="anno">Loop 不替代 Harness，它坐在 Harness 上面。Harness 的 bug 会被 Loop 放大 N 倍。</text>
+  <text x="360" y="412" text-anchor="middle" class="anno">—— 先造好 Harness，再造 Loop。</text>
+</svg>

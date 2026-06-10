@@ -447,6 +447,13 @@ Issue #57 "并发提交时数据丢失" 修复失败。
 
 ---
 
+## 配图
+
+1. ![Auto-Fix Loop 完整流程图](../assets/img/02-auto-fix-flow.svg)
+2. ![5 天入门路线](../assets/img/02-five-day-onramp.svg)
+
+---
+
 📌 系列阅读地图：[reading-map.md](../reading-map.md)
 🔗 English version: [en/02-loop-engineering-in-practice.md](../en/02-loop-engineering-in-practice.md)
 🔗 上一篇: [01 Loop Engineering 是什么](./01-loop-engineering.md)

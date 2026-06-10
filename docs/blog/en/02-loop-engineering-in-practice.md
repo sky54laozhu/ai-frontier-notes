@@ -363,6 +363,13 @@ Five days, one block per day. That's the onramp to Loop Engineering — not unde
 
 ---
 
+## Diagrams
+
+1. ![Auto-Fix Loop full flow](../assets/img/02-auto-fix-flow.svg)
+2. ![5-day onramp](../assets/img/02-five-day-onramp.svg)
+
+---
+
 📌 Reading map: [reading-map.md](../reading-map.md)
 🔗 Chinese version: [zh/02-loop-engineering-in-practice.md](../zh/02-loop-engineering-in-practice.md)
 🔗 Previous: [01 What is Loop Engineering](./01-loop-engineering.md)

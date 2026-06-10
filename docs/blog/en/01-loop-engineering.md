@@ -212,6 +212,12 @@ All factual claims in this article were verified through adversarial 3-vote veri
 
 ---
 
+## Diagrams
+
+1. ![Loop Engineering origin timeline](../assets/img/01-timeline.svg)
+2. ![Five building blocks + memory](../assets/img/01-five-blocks.svg)
+3. ![Loop / Harness / Context conceptual stack](../assets/img/01-conceptual-stack.svg)
+
 Research stats: 6 search angles | 22 sources | 108 claims extracted | 25 verified | 22 confirmed | 3 refuted | 8 final findings | 105 agent calls
 
 🔗 Chinese version: [zh/01-loop-engineering.md](../zh/01-loop-engineering.md)

@@ -283,6 +283,13 @@ ai-frontier-notes/
 
 ---
 
+## 配图
+
+1. ![只读 Loop vs 读写 Loop 对比](../assets/img/03-read-only-vs-readwrite.svg)
+2. ![Star Tracker 构件升级路线图](../assets/img/03-upgrade-path.svg)
+
+---
+
 📌 系列阅读地图：[reading-map.md](../reading-map.md)
 🔗 English version: [en/03-loop-hello-world-star-tracker.md](../en/03-loop-hello-world-star-tracker.md)
 🔗 上一篇: [02 Loop Engineering 实战](./02-loop-engineering-in-practice.md)

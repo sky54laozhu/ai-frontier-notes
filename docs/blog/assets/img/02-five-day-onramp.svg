@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 320" font-family="-apple-system, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif" font-size="13" role="img" aria-labelledby="t5 d5">
+  <title id="t5">Loop Engineering 5 天入门路线</title>
+  <desc id="d5">5 天渐进式入门路线：Day 1 写 CLAUDE.md（Skills），Day 2 跑最小 Loop（Scheduling），Day 3 加 Checker（Sub-agents），Day 4 加 Memory，Day 5 加 MCP + Worktree。每天加一个构件。</desc>
+  <style>
+    .day-box { rx: 10; stroke: #1a2233; stroke-width: 1.5; }
+    .day-num { fill: #fff; font-weight: 700; font-size: 22px; text-anchor: middle; }
+    .day-title { fill: #1a2233; font-weight: 600; font-size: 13px; text-anchor: middle; }
+    .day-sub { fill: #666; font-size: 11px; text-anchor: middle; }
+    .day-block { fill: #fff; font-size: 10px; text-anchor: middle; font-weight: 600; }
+    .conn { stroke: #9aa0ad; stroke-width: 2; fill: none; marker-end: url(#a5); }
+    .badge { rx: 4; }
+  </style>
+  <defs>
+    <marker id="a5" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#9aa0ad"/></marker>
+  </defs>
+
+  <rect x="0" y="0" width="820" height="320" fill="#fafbfc" rx="8"/>
+  <text x="410" y="28" text-anchor="middle" fill="#1a2233" font-size="16" font-weight="600">5 天入门 Loop Engineering —— 每天加一个构件</text>
+
+  <!-- Day 1 -->
+  <rect x="20" y="60" width="140" height="180" class="day-box" fill="#eef4ff"/>
+  <rect x="20" y="60" width="140" height="40" class="day-box" fill="#4f97ff"/>
+  <text x="90" y="86" class="day-num">Day 1</text>
+  <text x="90" y="120" class="day-title">写 CLAUDE.md</text>
+  <text x="90" y="140" class="day-sub">测试命令</text>
+  <text x="90" y="155" class="day-sub">代码规范</text>
+  <text x="90" y="170" class="day-sub">PR 格式</text>
+  <rect x="45" y="200" width="90" height="22" class="badge" fill="#4f97ff"/>
+  <text x="90" y="215" class="day-block">+ Skills</text>
+
+  <line x1="160" y1="150" x2="180" y2="150" class="conn"/>
+
+  <!-- Day 2 -->
+  <rect x="180" y="60" width="140" height="180" class="day-box" fill="#eef4ff"/>
+  <rect x="180" y="60" width="140" height="40" class="day-box" fill="#0a7c2e"/>
+  <text x="250" y="86" class="day-num">Day 2</text>
+  <text x="250" y="120" class="day-title">跑最小 Loop</text>
+  <text x="250" y="140" class="day-sub">/loop 30m</text>
+  <text x="250" y="155" class="day-sub">跑测试 → 修 → 提交</text>
+  <text x="250" y="170" class="day-sub">观察错误 → 完善 Skills</text>
+  <rect x="205" y="200" width="90" height="22" class="badge" fill="#0a7c2e"/>
+  <text x="250" y="215" class="day-block">+ Scheduling</text>
+
+  <line x1="320" y1="150" x2="340" y2="150" class="conn"/>
+
+  <!-- Day 3 -->
+  <rect x="340" y="60" width="140" height="180" class="day-box" fill="#eef4ff"/>
+  <rect x="340" y="60" width="140" height="40" class="day-box" fill="#c75050"/>
+  <text x="410" y="86" class="day-num">Day 3</text>
+  <text x="410" y="120" class="day-title">加 Checker</text>
+  <text x="410" y="140" class="day-sub">Maker + Checker 分工</text>
+  <text x="410" y="155" class="day-sub">独立上下文审查</text>
+  <text x="410" y="170" class="day-sub">默认立场：拒绝</text>
+  <rect x="365" y="200" width="90" height="22" class="badge" fill="#c75050"/>
+  <text x="410" y="215" class="day-block">+ Sub-agents</text>
+
+  <line x1="480" y1="150" x2="500" y2="150" class="conn"/>
+
+  <!-- Day 4 -->
+  <rect x="500" y="60" width="140" height="180" class="day-box" fill="#eef4ff"/>
+  <rect x="500" y="60" width="140" height="40" class="day-box" fill="#1a2233"/>
+  <text x="570" y="86" class="day-num">Day 4</text>
+  <text x="570" y="120" class="day-title">加 Memory</text>
+  <text x="570" y="140" class="day-sub">成功/失败经验持久化</text>
+  <text x="570" y="155" class="day-sub">跨周期不重复犯错</text>
+  <text x="570" y="170" class="day-sub">.claude/memory/</text>
+  <rect x="525" y="200" width="90" height="22" class="badge" fill="#1a2233"/>
+  <text x="570" y="215" class="day-block">+ Memory</text>
+
+  <line x1="640" y1="150" x2="660" y2="150" class="conn"/>
+
+  <!-- Day 5 -->
+  <rect x="660" y="60" width="140" height="180" class="day-box" fill="#eef4ff"/>
+  <rect x="660" y="60" width="140" height="40" class="day-box" fill="#e8a838"/>
+  <text x="730" y="86" class="day-num">Day 5</text>
+  <text x="730" y="120" class="day-title">加 MCP + Worktree</text>
+  <text x="730" y="140" class="day-sub">GitHub MCP 读 Issues</text>
+  <text x="730" y="155" class="day-sub">Worktree 并行隔离</text>
+  <text x="730" y="170" class="day-sub">自动提 PR</text>
+  <rect x="675" y="194" width="50" height="22" class="badge" fill="#7ab2ff"/>
+  <text x="700" y="209" class="day-block">MCP</text>
+  <rect x="730" y="194" width="60" height="22" class="badge" fill="#e8a838"/>
+  <text x="760" y="209" class="day-block">Worktree</text>
+
+  <!-- Bottom: complexity bar -->
+  <text x="90" y="275" text-anchor="middle" fill="#0a7c2e" font-size="11" font-weight="600">简单</text>
+  <rect x="140" y="268" width="540" height="6" rx="3" fill="#eef4ff"/>
+  <rect x="140" y="268" width="540" height="6" rx="3" fill="url(#grad5)"/>
+  <text x="730" y="275" text-anchor="middle" fill="#c75050" font-size="11" font-weight="600">完整</text>
+  <text x="410" y="300" text-anchor="middle" fill="#888" font-size="11">先让最简单的 Loop 跑通，再逐个加构件</text>
+  <defs>
+    <linearGradient id="grad5" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0a7c2e" stop-opacity=".3"/>
+      <stop offset="100%" stop-color="#c75050" stop-opacity=".6"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 520" font-family="-apple-system, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif" font-size="13" role="img" aria-labelledby="t2 d2">
+  <title id="t2">Loop Engineering 五大构件 + 记忆</title>
+  <desc id="d2">环形布局展示 Loop 的五大结构原语（Scheduling、Worktrees、Skills、MCP/Plugins、Sub-agents）围绕中心的 Memory/State 组成完整 Loop。</desc>
+  <style>
+    .block { rx: 12; stroke: #1a2233; stroke-width: 1.5; }
+    .block-label { fill: #fff; font-weight: 700; font-size: 15px; text-anchor: middle; }
+    .block-sub { fill: rgba(255,255,255,.8); font-size: 11.5px; text-anchor: middle; }
+    .center-label { fill: #fff; font-weight: 700; font-size: 16px; text-anchor: middle; }
+    .center-sub { fill: rgba(255,255,255,.8); font-size: 12px; text-anchor: middle; }
+    .conn { stroke: #9aa0ad; stroke-width: 1.5; stroke-dasharray: 6 4; fill: none; }
+    .anno { fill: #5a5a5a; font-size: 11px; text-anchor: middle; }
+  </style>
+
+  <rect x="0" y="0" width="820" height="520" fill="#fafbfc" rx="8"/>
+  <text x="410" y="32" text-anchor="middle" fill="#1a2233" font-size="16" font-weight="600">Loop 的五大构件 + 记忆</text>
+
+  <!-- Center: Memory -->
+  <circle cx="410" cy="275" r="60" fill="#1a2233" stroke="#0a7c2e" stroke-width="3"/>
+  <text x="410" y="268" class="center-label">Memory</text>
+  <text x="410" y="288" class="center-sub">跨运行持久化</text>
+  <text x="410" y="302" class="center-sub">耐用脊柱</text>
+
+  <!-- Block 1: Scheduling (top center) -->
+  <rect x="330" y="60" width="160" height="72" class="block" fill="#0a7c2e"/>
+  <text x="410" y="92" class="block-label">① Scheduling</text>
+  <text x="410" y="110" class="block-sub">定时 / 事件 / 目标驱动</text>
+  <text x="410" y="124" class="block-sub">Loop 的心跳</text>
+  <line x1="410" y1="132" x2="410" y2="215" class="conn"/>
+
+  <!-- Block 2: Skills (top left) -->
+  <rect x="80" y="120" width="160" height="72" class="block" fill="#4f97ff"/>
+  <text x="160" y="152" class="block-label">③ Skills</text>
+  <text x="160" y="170" class="block-sub">CLAUDE.md · 可执行知识</text>
+  <text x="160" y="184" class="block-sub">Loop 的世界模型</text>
+  <line x1="240" y1="168" x2="355" y2="255" class="conn"/>
+
+  <!-- Block 3: MCP (top right) -->
+  <rect x="580" y="120" width="160" height="72" class="block" fill="#7ab2ff"/>
+  <text x="660" y="152" class="block-label">④ MCP / Plugins</text>
+  <text x="660" y="170" class="block-sub">连接外部系统</text>
+  <text x="660" y="184" class="block-sub">Loop 的触手</text>
+  <line x1="580" y1="168" x2="465" y2="255" class="conn"/>
+
+  <!-- Block 4: Worktrees (bottom left) -->
+  <rect x="80" y="340" width="160" height="72" class="block" fill="#e8a838"/>
+  <text x="160" y="372" class="block-label">② Worktrees</text>
+  <text x="160" y="390" class="block-sub">并行执行隔离</text>
+  <text x="160" y="404" class="block-sub">每任务独立副本</text>
+  <line x1="240" y1="370" x2="355" y2="295" class="conn"/>
+
+  <!-- Block 5: Sub-agents (bottom right) -->
+  <rect x="580" y="340" width="160" height="72" class="block" fill="#c75050"/>
+  <text x="660" y="372" class="block-label">⑤ Sub-agents</text>
+  <text x="660" y="390" class="block-sub">Maker / Checker 分工</text>
+  <text x="660" y="404" class="block-sub">生成 ≠ 验证</text>
+  <line x1="580" y1="370" x2="465" y2="295" class="conn"/>
+
+  <!-- Bottom annotation -->
+  <text x="410" y="470" class="anno">"Claude Code 和 Codex 现在都具备这五项能力。" —— Addy Osmani</text>
+  <text x="410" y="488" class="anno">两个竞争产品不约而同长出同样的五个器官 = 环境选择压力的必然结果</text>
+</svg>

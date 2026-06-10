@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 500" font-family="-apple-system, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif" font-size="13" role="img" aria-labelledby="t4 d4">
+  <title id="t4">Auto-Fix Loop 完整流程图</title>
+  <desc id="d4">展示 Auto-Fix Loop 的六步流程：读 Memory → 扫描 Issues → 开 Worktree → Maker Agent 修复 → Checker Agent 审查 → 根据结果提 PR 或记录失败。</desc>
+  <style>
+    .box { rx: 10; stroke-width: 1.5; }
+    .box-label { fill: #fff; font-weight: 600; font-size: 14px; text-anchor: middle; }
+    .box-sub { fill: rgba(255,255,255,.8); font-size: 11px; text-anchor: middle; }
+    .flow { stroke: #1a2233; stroke-width: 2; fill: none; marker-end: url(#arw); }
+    .flow-yes { stroke: #0a7c2e; stroke-width: 2; fill: none; marker-end: url(#arw-g); }
+    .flow-no { stroke: #c75050; stroke-width: 2; fill: none; marker-end: url(#arw-r); }
+    .decision { fill: #e8a838; stroke: #1a2233; stroke-width: 1.5; }
+    .dec-label { fill: #fff; font-weight: 600; font-size: 12px; text-anchor: middle; }
+    .result { rx: 10; stroke-width: 1.5; }
+    .result-label { font-weight: 600; font-size: 12px; text-anchor: middle; }
+    .anno { fill: #888; font-size: 10px; }
+    .step-num { fill: #fff; font-weight: 700; font-size: 18px; text-anchor: middle; }
+  </style>
+  <defs>
+    <marker id="arw" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#1a2233"/></marker>
+    <marker id="arw-g" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#0a7c2e"/></marker>
+    <marker id="arw-r" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#c75050"/></marker>
+  </defs>
+
+  <rect x="0" y="0" width="860" height="500" fill="#fafbfc" rx="8"/>
+  <text x="430" y="28" text-anchor="middle" fill="#1a2233" font-size="16" font-weight="600">Auto-Fix Loop 完整流程</text>
+
+  <!-- Step 1: Read Memory -->
+  <rect x="30" y="55" width="150" height="65" class="box" stroke="#1a2233" fill="#1a2233"/>
+  <text x="105" y="82" class="box-label">① 读 Memory</text>
+  <text x="105" y="100" class="box-sub">跳过已失败 · 复用经验</text>
+  <line x1="180" y1="87" x2="220" y2="87" class="flow"/>
+
+  <!-- Step 2: Scan Issues -->
+  <rect x="220" y="55" width="150" height="65" class="box" stroke="#1a2233" fill="#4f97ff"/>
+  <text x="295" y="82" class="box-label">② 扫描 Issues</text>
+  <text x="295" y="100" class="box-sub">标 bug · 未认领 · MCP</text>
+  <line x1="370" y1="87" x2="410" y2="87" class="flow"/>
+
+  <!-- Step 3: Worktree -->
+  <rect x="410" y="55" width="150" height="65" class="box" stroke="#1a2233" fill="#7ab2ff"/>
+  <text x="485" y="82" class="box-label">③ 开 Worktree</text>
+  <text x="485" y="100" class="box-sub">隔离执行环境</text>
+  <line x1="560" y1="87" x2="600" y2="87" class="flow"/>
+
+  <!-- Step 4: Maker Agent -->
+  <rect x="600" y="55" width="170" height="65" class="box" stroke="#1a2233" fill="#0a7c2e"/>
+  <text x="685" y="82" class="box-label">④ Maker Agent</text>
+  <text x="685" y="100" class="box-sub">定位 · 修复 · 写测试 · 跑测试</text>
+
+  <!-- Arrow down from Maker -->
+  <line x1="685" y1="120" x2="685" y2="175" class="flow"/>
+
+  <!-- Step 5: Checker Agent -->
+  <rect x="600" y="175" width="170" height="65" class="box" stroke="#1a2233" fill="#c75050"/>
+  <text x="685" y="202" class="box-label">⑤ Checker Agent</text>
+  <text x="685" y="220" class="box-sub">独立审查 · 默认拒绝</text>
+
+  <!-- Arrow down from Checker -->
+  <line x1="685" y1="240" x2="685" y2="290" class="flow"/>
+
+  <!-- Decision diamond -->
+  <polygon points="685,290 760,330 685,370 610,330" class="decision"/>
+  <text x="685" y="327" class="dec-label">通过？</text>
+  <text x="685" y="343" class="dec-label">测试 OK？</text>
+
+  <!-- YES path -->
+  <line x1="760" y1="330" x2="810" y2="330" class="flow-yes"/>
+  <rect x="690" y="400" width="150" height="55" class="result" stroke="#0a7c2e" fill="#e8f5ec"/>
+  <text x="765" y="423" class="result-label" fill="#0a7c2e">✓ 提 PR</text>
+  <text x="765" y="440" fill="#0a7c2e" font-size="11" text-anchor="middle">写成功 Memory</text>
+  <line x1="810" y1="336" x2="810" y2="395" class="flow-yes" marker-end="none"/>
+  <line x1="810" y1="395" x2="765" y2="400" class="flow-yes"/>
+  <text x="815" y="325" class="anno" fill="#0a7c2e" font-weight="600">YES</text>
+
+  <!-- NO path -->
+  <line x1="610" y1="330" x2="540" y2="330" class="flow-no"/>
+  <rect x="390" y="400" width="170" height="55" class="result" stroke="#c75050" fill="#fce8e8"/>
+  <text x="475" y="423" class="result-label" fill="#c75050">✗ 记录失败</text>
+  <text x="475" y="440" fill="#c75050" font-size="11" text-anchor="middle">写失败 Memory · 清理 Worktree</text>
+  <line x1="540" y1="336" x2="540" y2="395" class="flow-no" marker-end="none"/>
+  <line x1="540" y1="395" x2="475" y2="400" class="flow-no"/>
+  <text x="555" y="325" class="anno" fill="#c75050" font-weight="600">NO</text>
+
+  <!-- Loop back arrow -->
+  <path d="M390,427 L100,427 L100,120" class="flow" stroke-dasharray="6 4" stroke="#888"/>
+  <text x="245" y="445" class="anno">下一周期 · Memory 已更新</text>
+
+  <!-- Schedule indicator -->
+  <rect x="30" y="420" width="110" height="40" rx="8" fill="#0a7c2e" opacity=".15" stroke="#0a7c2e" stroke-width="1"/>
+  <text x="85" y="445" text-anchor="middle" fill="#0a7c2e" font-size="12" font-weight="600">每 15 分钟</text>
+</svg>
