@@ -1,74 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 280" font-family="-apple-system, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif" font-size="13" role="img" aria-labelledby="t3 d3">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 340" font-family="-apple-system, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif" font-size="13" role="img" aria-labelledby="t3 d3">
   <title id="t3">Loop Engineering 概念诞生时间线</title>
   <desc id="d3">时间线：2022 ReAct 论文 → 2025.09 Queen's ALE 论文 → 2026.03 McGill 控制论论文 → 2026.06.02 Boris Cherny 发言 → 06.07 Steinberger 发推 → 06.08 Osmani 命名 Loop Engineering</desc>
   <style>
     .axis { stroke: #1a2233; stroke-width: 2; }
     .tick { stroke: #1a2233; stroke-width: 1.5; }
     .dot { stroke: #1a2233; stroke-width: 1.5; }
-    .date { fill: #1a2233; font-weight: 600; font-size: 11px; text-anchor: middle; }
+    .date { fill: #1a2233; font-weight: 600; font-size: 12px; text-anchor: middle; }
     .event { fill: #333; font-size: 11.5px; text-anchor: middle; }
     .event-b { fill: #333; font-size: 11.5px; text-anchor: middle; font-weight: 600; }
     .src { fill: #888; font-size: 10px; text-anchor: middle; }
+    .leader { stroke: #bbb; stroke-width: 1; stroke-dasharray: 3 3; }
   </style>
 
-  <rect x="0" y="0" width="820" height="280" fill="#fafbfc" rx="8"/>
-  <text x="410" y="28" text-anchor="middle" fill="#1a2233" font-size="16" font-weight="600">Loop Engineering 诞生时间线</text>
+  <rect x="0" y="0" width="920" height="340" fill="#fafbfc" rx="8"/>
+  <text x="460" y="30" text-anchor="middle" fill="#1a2233" font-size="16" font-weight="600">Loop Engineering 诞生时间线</text>
 
   <!-- Main axis -->
-  <line x1="40" y1="140" x2="780" y2="140" class="axis"/>
+  <line x1="50" y1="170" x2="880" y2="170" class="axis"/>
 
-  <!-- Tick 1: ReAct 2022 -->
-  <line x1="80" y1="130" x2="80" y2="150" class="tick"/>
-  <circle cx="80" cy="140" r="5" fill="#7ab2ff" class="dot"/>
-  <text x="80" y="120" class="date">2022.10</text>
-  <text x="80" y="170" class="event">ReAct 论文</text>
-  <text x="80" y="184" class="src">Princeton + Google</text>
+  <!-- Tick 1: ReAct 2022 (below) -->
+  <line x1="100" y1="160" x2="100" y2="180" class="tick"/>
+  <circle cx="100" cy="170" r="5" fill="#7ab2ff" class="dot"/>
+  <text x="100" y="150" class="date">2022.10</text>
+  <text x="100" y="200" class="event">ReAct 论文</text>
+  <text x="100" y="216" class="src">Princeton + Google</text>
 
-  <!-- Tick 2: ALE 2025.09 -->
-  <line x1="230" y1="130" x2="230" y2="150" class="tick"/>
-  <circle cx="230" cy="140" r="5" fill="#4f97ff" class="dot"/>
-  <text x="230" y="120" class="date">2025.09</text>
-  <text x="230" y="170" class="event">ALE 论文</text>
-  <text x="230" y="184" class="src">Queen's University</text>
+  <!-- Tick 2: ALE 2025.09 (below) -->
+  <line x1="280" y1="160" x2="280" y2="180" class="tick"/>
+  <circle cx="280" cy="170" r="5" fill="#4f97ff" class="dot"/>
+  <text x="280" y="150" class="date">2025.09</text>
+  <text x="280" y="200" class="event">ALE 论文</text>
+  <text x="280" y="216" class="src">Queen's University</text>
 
-  <!-- Tick 3: McGill 2026.03 -->
-  <line x1="380" y1="130" x2="380" y2="150" class="tick"/>
-  <circle cx="380" cy="140" r="5" fill="#4f97ff" class="dot"/>
-  <text x="380" y="120" class="date">2026.03</text>
-  <text x="380" y="170" class="event">控制论形式化</text>
-  <text x="380" y="184" class="src">McGill University</text>
+  <!-- Tick 3: McGill 2026.03 (below) -->
+  <line x1="460" y1="160" x2="460" y2="180" class="tick"/>
+  <circle cx="460" cy="170" r="5" fill="#4f97ff" class="dot"/>
+  <text x="460" y="150" class="date">2026.03</text>
+  <text x="460" y="200" class="event">控制论形式化</text>
+  <text x="460" y="216" class="src">McGill University</text>
 
-  <!-- Tick 4: Boris Cherny 2026.06.02 -->
-  <line x1="530" y1="130" x2="530" y2="150" class="tick"/>
-  <circle cx="530" cy="140" r="6" fill="#e8a838" class="dot"/>
-  <text x="530" y="120" class="date">06.02</text>
-  <text x="530" y="170" class="event-b">Boris Cherny</text>
-  <text x="530" y="184" class="event">"我的工作是写 loop"</text>
-  <text x="530" y="198" class="src">Acquired Unplugged · ~700K 浏览</text>
+  <!-- Tick 4: Boris Cherny 2026.06.02 (ABOVE axis) -->
+  <line x1="620" y1="160" x2="620" y2="180" class="tick"/>
+  <circle cx="620" cy="170" r="6" fill="#e8a838" class="dot"/>
+  <line x1="620" y1="160" x2="620" y2="110" class="leader"/>
+  <text x="620" y="100" class="date">06.02</text>
+  <text x="620" y="82" class="event-b">Boris Cherny</text>
+  <text x="620" y="68" class="event">"我的工作是写 loop"</text>
+  <text x="620" y="54" class="src">Acquired Unplugged · ~700K 浏览</text>
 
-  <!-- Tick 5: Steinberger 06.07 -->
-  <line x1="640" y1="130" x2="640" y2="150" class="tick"/>
-  <circle cx="640" cy="140" r="6" fill="#e8a838" class="dot"/>
-  <text x="640" y="120" class="date">06.07</text>
-  <text x="640" y="170" class="event-b">Peter Steinberger</text>
-  <text x="640" y="184" class="event">"设计 loop 去 prompt"</text>
-  <text x="640" y="198" class="src">X (Twitter)</text>
+  <!-- Tick 5: Steinberger 06.07 (BELOW axis) -->
+  <line x1="740" y1="160" x2="740" y2="180" class="tick"/>
+  <circle cx="740" cy="170" r="6" fill="#e8a838" class="dot"/>
+  <line x1="740" y1="180" x2="740" y2="230" class="leader"/>
+  <text x="740" y="245" class="date">06.07</text>
+  <text x="740" y="262" class="event-b">Peter Steinberger</text>
+  <text x="740" y="278" class="event">"设计 loop 去 prompt"</text>
+  <text x="740" y="294" class="src">X (Twitter)</text>
 
-  <!-- Tick 6: Osmani 06.08 -->
-  <line x1="740" y1="130" x2="740" y2="150" class="tick"/>
-  <circle cx="740" cy="140" r="8" fill="#0a7c2e" class="dot"/>
-  <text x="740" y="110" class="date" font-size="12" fill="#0a7c2e">06.08</text>
-  <text x="740" y="170" class="event-b" fill="#0a7c2e">Addy Osmani</text>
-  <text x="740" y="184" class="event">命名 Loop Engineering</text>
-  <text x="740" y="198" class="src">addyosmani.com</text>
+  <!-- Tick 6: Osmani 06.08 (ABOVE axis) -->
+  <line x1="850" y1="160" x2="850" y2="180" class="tick"/>
+  <circle cx="850" cy="170" r="8" fill="#0a7c2e" class="dot"/>
+  <line x1="850" y1="160" x2="850" y2="110" class="leader"/>
+  <text x="850" y="100" class="date" fill="#0a7c2e">06.08</text>
+  <text x="850" y="82" class="event-b" fill="#0a7c2e">Addy Osmani</text>
+  <text x="850" y="68" class="event" fill="#0a7c2e">命名 Loop Engineering</text>
+  <text x="850" y="54" class="src">addyosmani.com</text>
 
   <!-- Bottom legend -->
-  <circle cx="200" cy="245" r="5" fill="#7ab2ff"/>
-  <text x="215" y="249" fill="#5a5a5a" font-size="11">学术论文</text>
-  <circle cx="310" cy="245" r="5" fill="#e8a838"/>
-  <text x="325" y="249" fill="#5a5a5a" font-size="11">从业者发声</text>
-  <circle cx="430" cy="245" r="6" fill="#0a7c2e"/>
-  <text x="445" y="249" fill="#5a5a5a" font-size="11">概念正式命名</text>
-  <text x="410" y="270" text-anchor="middle" fill="#888" font-size="10">概念诞生才 2 天（截至本文写作），定义仍在快速演变</text>
+  <circle cx="260" cy="320" r="5" fill="#7ab2ff"/>
+  <text x="278" y="324" fill="#5a5a5a" font-size="11">学术论文</text>
+  <circle cx="370" cy="320" r="5" fill="#e8a838"/>
+  <text x="388" y="324" fill="#5a5a5a" font-size="11">从业者发声</text>
+  <circle cx="490" cy="320" r="6" fill="#0a7c2e"/>
+  <text x="508" y="324" fill="#5a5a5a" font-size="11">概念正式命名</text>
+  <text x="660" y="324" fill="#888" font-size="10">概念诞生才 2 天（截至本文写作），定义仍在快速演变</text>
 </svg>
