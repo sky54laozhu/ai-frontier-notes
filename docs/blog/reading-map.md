@@ -14,6 +14,7 @@
 | | 04 | [Loop-Driven Development](zh/04-loop-driven-development.md) | 用 5 个 Loop 跑完从 Spec 到验收的全过程 |
 | | 05 | [Token 经济学](zh/05-token-optimization.md) | Claude Code 全流程开发的成本优化手册 |
 | | 06 | [Claude Code 卡顿排查](zh/06-claude-code-stuck-guide.md) | 六大根因 + 诊断决策树 + 恢复工具箱 |
+| | 07 | [模型编排实战](zh/07-model-orchestration.md) | 让正确的模型在正确的阶段自动上场 |
 
 ## English · Reading Order
 
@@ -25,6 +26,7 @@
 | | 04 | [Loop-Driven Development](zh/04-loop-driven-development.md) | 5 Loops from Spec to acceptance, full lifecycle |
 | | 05 | [Token Economics](en/05-token-optimization.md) | Cost optimization playbook for full-lifecycle Claude Code dev |
 | | 06 | [Claude Code Stuck Guide](en/06-claude-code-stuck-guide.md) | Six root causes + diagnosis flowchart + recovery toolkit |
+| | 07 | [Model Orchestration](en/07-model-orchestration.md) | Putting the right model on the right phase, automatically |
 
 ## 按"我想了解 X"反查
 
@@ -59,6 +61,11 @@
 - **UI 假死（Ghost Freeze）**：06 § 根因 6
 - **卡顿诊断流程**：06 § 诊断决策树
 - **不要让 Claude 修自己的超时配置**：06 § 反模式警告
+- **模型怎么自动切换**：07
+- **CC Switch 怎么用**：07 § 第二层
+- **脚本编排 LDD 流水线**：07 § 第三层
+- **OpenRouter / LiteLLM**：07 § 第二层
+- **模型编排工具对比**：07 § 第二层
 
 ## 系列说明
 

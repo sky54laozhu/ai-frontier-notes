@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 420" font-family="-apple-system, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif" font-size="13" role="img" aria-labelledby="t-lp d-lp">
+  <title id="t-lp">LDD Loop 编排流程图</title>
+  <desc id="d-lp">五阶段流水线：Spec(Opus) → Plan(Opus) → Build(Sonnet) ↔ Review(Sonnet) 内层循环 → Accept(Haiku) 外层循环，带逃逸阀</desc>
+  <style>
+    .phase-box { rx: 10; stroke-width: 2; }
+    .phase-label { fill: #fff; font-weight: 700; font-size: 13px; text-anchor: middle; }
+    .phase-model { fill: rgba(255,255,255,.8); font-size: 10px; text-anchor: middle; }
+    .flow-arrow { stroke: #555; stroke-width: 2; fill: none; marker-end: url(#arr); }
+    .loop-arrow { stroke-width: 2; fill: none; marker-end: url(#arr); }
+    .loop-label { font-size: 10px; font-weight: 600; text-anchor: middle; }
+    .escape { rx: 8; }
+    .anno { fill: #888; font-size: 11px; text-anchor: middle; }
+  </style>
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#555"/>
+    </marker>
+    <marker id="arr-red" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#c75050"/>
+    </marker>
+    <marker id="arr-orange" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#e8a838"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="860" height="420" fill="#fafbfc" rx="8"/>
+  <text x="430" y="28" text-anchor="middle" fill="#1a2233" font-size="16" font-weight="600">LDD Loop 编排 — 线性流水线 + 双层闭环</text>
+
+  <!-- ===== Top: Linear Pipeline ===== -->
+  <text x="40" y="68" fill="#1a2233" font-weight="600" font-size="13">线性版 (ldd-pipeline.sh)</text>
+
+  <!-- Spec -->
+  <rect x="40" y="80" width="130" height="50" class="phase-box" fill="#4f97ff" stroke="#3a7bd5"/>
+  <text x="105" y="103" class="phase-label">Spec</text>
+  <text x="105" y="120" class="phase-model">Opus · $0.50</text>
+  <!-- Arrow -->
+  <line x1="170" y1="105" x2="195" y2="105" class="flow-arrow"/>
+
+  <!-- Plan -->
+  <rect x="200" y="80" width="130" height="50" class="phase-box" fill="#4f97ff" stroke="#3a7bd5"/>
+  <text x="265" y="103" class="phase-label">Plan</text>
+  <text x="265" y="120" class="phase-model">Opus · $0.40</text>
+  <line x1="330" y1="105" x2="355" y2="105" class="flow-arrow"/>
+
+  <!-- Build -->
+  <rect x="360" y="80" width="130" height="50" class="phase-box" fill="#7ab2ff" stroke="#5a92df"/>
+  <text x="425" y="103" class="phase-label">Build</text>
+  <text x="425" y="120" class="phase-model">Sonnet · $3.20</text>
+  <line x1="490" y1="105" x2="515" y2="105" class="flow-arrow"/>
+
+  <!-- Review -->
+  <rect x="520" y="80" width="130" height="50" class="phase-box" fill="#7ab2ff" stroke="#5a92df"/>
+  <text x="585" y="103" class="phase-label">Review</text>
+  <text x="585" y="120" class="phase-model">Sonnet · $0.60</text>
+  <line x1="650" y1="105" x2="675" y2="105" class="flow-arrow"/>
+
+  <!-- Accept -->
+  <rect x="680" y="80" width="130" height="50" class="phase-box" fill="#0a7c2e" stroke="#087025"/>
+  <text x="745" y="103" class="phase-label">Accept</text>
+  <text x="745" y="120" class="phase-model">Haiku · $0.15</text>
+
+  <text x="820" y="108" fill="#0a7c2e" font-weight="700" font-size="16">→</text>
+
+  <!-- ===== Bottom: Loop Version ===== -->
+  <text x="40" y="190" fill="#1a2233" font-weight="600" font-size="13">Loop 版 (ldd-loop.sh)</text>
+
+  <!-- Spec (once) -->
+  <rect x="40" y="205" width="110" height="50" class="phase-box" fill="#4f97ff" stroke="#3a7bd5"/>
+  <text x="95" y="228" class="phase-label">Spec</text>
+  <text x="95" y="245" class="phase-model">Opus · 只跑一次</text>
+  <line x1="150" y1="230" x2="170" y2="230" class="flow-arrow"/>
+
+  <!-- Plan (once) -->
+  <rect x="175" y="205" width="110" height="50" class="phase-box" fill="#4f97ff" stroke="#3a7bd5"/>
+  <text x="230" y="228" class="phase-label">Plan</text>
+  <text x="230" y="245" class="phase-model">Opus · 只跑一次</text>
+  <line x1="285" y1="230" x2="310" y2="230" class="flow-arrow"/>
+
+  <!-- Build (in loop) -->
+  <rect x="315" y="205" width="130" height="50" class="phase-box" fill="#7ab2ff" stroke="#5a92df"/>
+  <text x="380" y="228" class="phase-label">Build</text>
+  <text x="380" y="245" class="phase-model">Sonnet · 可重试</text>
+  <line x1="445" y1="230" x2="475" y2="230" class="flow-arrow"/>
+
+  <!-- Review (in loop) -->
+  <rect x="480" y="205" width="130" height="50" class="phase-box" fill="#7ab2ff" stroke="#5a92df"/>
+  <text x="545" y="228" class="phase-label">Review</text>
+  <text x="545" y="245" class="phase-model">Sonnet · 可重试</text>
+  <line x1="610" y1="230" x2="640" y2="230" class="flow-arrow"/>
+
+  <!-- Accept (in loop) -->
+  <rect x="645" y="205" width="130" height="50" class="phase-box" fill="#0a7c2e" stroke="#087025"/>
+  <text x="710" y="228" class="phase-label">Accept</text>
+  <text x="710" y="245" class="phase-model">Haiku · 可重试</text>
+
+  <!-- Done -->
+  <line x1="775" y1="230" x2="810" y2="230" class="flow-arrow"/>
+  <rect x="810" y="218" width="40" height="24" rx="6" fill="#0a7c2e"/>
+  <text x="830" y="234" fill="#fff" font-weight="700" font-size="11" text-anchor="middle">Done</text>
+
+  <!-- Inner Loop: Review → Build (NEEDS_FIX) -->
+  <path d="M 510 258 Q 510 290 450 290 Q 380 290 380 258" class="loop-arrow" stroke="#e8a838" marker-end="url(#arr-orange)"/>
+  <rect x="400" y="281" width="100" height="18" rx="6" fill="#e8a838"/>
+  <text x="450" y="294" fill="#fff" font-weight="600" font-size="9" text-anchor="middle">内层: NEEDS_FIX</text>
+  <text x="450" y="315" fill="#e8a838" class="loop-label">Review 发现问题 → Build 修复</text>
+  <text x="450" y="330" fill="#e8a838" font-size="9" text-anchor="middle">上限 2 次</text>
+
+  <!-- Outer Loop: Accept → Build (FAIL) -->
+  <path d="M 680 258 Q 680 360 500 360 Q 350 360 350 258" class="loop-arrow" stroke="#c75050" marker-end="url(#arr-red)"/>
+  <rect x="460" y="349" width="100" height="18" rx="6" fill="#c75050"/>
+  <text x="510" y="362" fill="#fff" font-weight="600" font-size="9" text-anchor="middle">外层: FAIL</text>
+  <text x="510" y="385" fill="#c75050" class="loop-label">Accept 失败 → 回到 Build 重试</text>
+  <text x="510" y="400" fill="#c75050" font-size="9" text-anchor="middle">上限 3 次（逃逸阀）</text>
+
+  <!-- Escape Valve -->
+  <rect x="730" y="345" width="110" height="40" class="escape" fill="#fff" stroke="#c75050" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="785" y="363" fill="#c75050" font-weight="700" font-size="10" text-anchor="middle">逃逸阀</text>
+  <text x="785" y="377" fill="#c75050" font-size="9" text-anchor="middle">超限 → 人工介入</text>
+</svg>

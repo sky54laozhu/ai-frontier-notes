@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 400" font-family="-apple-system, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif" font-size="13" role="img" aria-labelledby="t-mcl d-mcl">
+  <title id="t-mcl">模型控制的三个层次</title>
+  <desc id="d-mcl">从内到外：内置机制（/model、--model、env var、opusplan）→ 社区工具（CC Switch、Router、OpenRouter）→ 脚本编排（claude -p 流水线、Loop 闭环）</desc>
+  <style>
+    .layer { stroke-width: 2; }
+    .layer-title { fill: #fff; font-weight: 700; font-size: 15px; text-anchor: middle; }
+    .layer-sub { fill: rgba(255,255,255,.85); font-size: 11px; text-anchor: middle; }
+    .layer-detail { fill: rgba(255,255,255,.7); font-size: 10px; text-anchor: middle; }
+    .tag { rx: 8; }
+    .tag-text { fill: #fff; font-weight: 600; font-size: 10px; text-anchor: middle; }
+    .anno { fill: #888; font-size: 11px; text-anchor: middle; }
+    .arrow { stroke: #aaa; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
+  </style>
+  <defs>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#aaa"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="860" height="400" fill="#fafbfc" rx="8"/>
+  <text x="430" y="30" text-anchor="middle" fill="#1a2233" font-size="16" font-weight="600">模型控制的三个层次 — 从手动到全自动</text>
+
+  <!-- Layer 3 (outermost): Script Orchestration -->
+  <rect x="40" y="55" width="780" height="310" rx="16" class="layer" fill="#3a7bd5" stroke="#2a5fb0" opacity="0.15"/>
+  <rect x="40" y="55" width="780" height="50" rx="16" fill="#3a7bd5"/>
+  <rect x="40" y="85" width="780" height="20" fill="#3a7bd5"/>
+  <text x="430" y="78" class="layer-title">第三层：脚本编排</text>
+  <text x="430" y="96" class="layer-sub">claude -p --model 流水线 | Loop 闭环 | 唯一真正按阶段自动切</text>
+  <rect x="580" y="67" width="120" height="22" class="tag" fill="#0a7c2e"/>
+  <text x="640" y="82" class="tag-text">全自动 · 按阶段</text>
+
+  <!-- Layer 2 (middle): Community Tools -->
+  <rect x="100" y="115" width="660" height="190" rx="14" class="layer" fill="#e8a838" stroke="#c08820" opacity="0.15"/>
+  <rect x="100" y="115" width="660" height="45" rx="14" fill="#e8a838"/>
+  <rect x="100" y="145" width="660" height="15" fill="#e8a838"/>
+  <text x="430" y="137" class="layer-title">第二层：社区工具</text>
+  <text x="430" y="153" class="layer-sub">CC Switch · Claude Code Router · OpenRouter · LiteLLM</text>
+  <rect x="560" y="124" width="120" height="22" class="tag" fill="#c75050"/>
+  <text x="620" y="139" class="tag-text">半自动 · 按特征</text>
+
+  <!-- Tool cards inside Layer 2 -->
+  <rect x="120" y="170" width="145" height="55" rx="8" fill="#fff" stroke="#e8a838" stroke-width="1.5"/>
+  <text x="192" y="190" fill="#1a2233" font-weight="600" font-size="11" text-anchor="middle">CC Switch</text>
+  <text x="192" y="205" fill="#666" font-size="9" text-anchor="middle">桌面管理器 · 50+ Provider</text>
+  <text x="192" y="217" fill="#666" font-size="9" text-anchor="middle">一键切 · 角色映射 · 故障转移</text>
+
+  <rect x="280" y="170" width="145" height="55" rx="8" fill="#fff" stroke="#e8a838" stroke-width="1.5"/>
+  <text x="352" y="190" fill="#1a2233" font-weight="600" font-size="11" text-anchor="middle">Claude Code Router</text>
+  <text x="352" y="205" fill="#666" font-size="9" text-anchor="middle">本地代理 · 规则路由</text>
+  <text x="352" y="217" fill="#666" font-size="9" text-anchor="middle">按任务类型自动分流</text>
+
+  <rect x="440" y="170" width="145" height="55" rx="8" fill="#fff" stroke="#e8a838" stroke-width="1.5"/>
+  <text x="512" y="190" fill="#1a2233" font-weight="600" font-size="11" text-anchor="middle">OpenRouter</text>
+  <text x="512" y="205" fill="#666" font-size="9" text-anchor="middle">500+ 模型 · ML 自动选</text>
+  <text x="512" y="217" fill="#666" font-size="9" text-anchor="middle">Auto Router · Fusion</text>
+
+  <rect x="600" y="170" width="145" height="55" rx="8" fill="#fff" stroke="#e8a838" stroke-width="1.5"/>
+  <text x="672" y="190" fill="#1a2233" font-weight="600" font-size="11" text-anchor="middle">LiteLLM</text>
+  <text x="672" y="205" fill="#666" font-size="9" text-anchor="middle">企业代理 · API 翻译</text>
+  <text x="672" y="217" fill="#666" font-size="9" text-anchor="middle">负载均衡 · 成本追踪</text>
+
+  <!-- Layer 1 (innermost): Built-in -->
+  <rect x="180" y="240" width="500" height="60" rx="12" class="layer" fill="#4f97ff" stroke="#3a7bd5"/>
+  <text x="430" y="265" class="layer-title">第一层：Claude Code 内置</text>
+  <text x="430" y="283" class="layer-sub">/model · --model flag · ANTHROPIC_MODEL env · opusplan · settings.json</text>
+  <rect x="520" y="252" width="100" height="22" class="tag" fill="#666"/>
+  <text x="570" y="267" class="tag-text">手动 · 半自动</text>
+
+  <!-- Priority arrow -->
+  <text x="430" y="330" fill="#1a2233" font-size="12" font-weight="600" text-anchor="middle">优先级：/model ＞ --model ＞ env var ＞ settings.json</text>
+
+  <!-- Bottom annotation -->
+  <text x="430" y="358" class="anno">层次越外 → 自动化程度越高 → 配置复杂度越高</text>
+  <text x="430" y="375" class="anno">推荐：日常用第一层 + CC Switch，CI/批量用第三层脚本编排</text>
+</svg>
