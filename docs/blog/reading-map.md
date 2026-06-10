@@ -1,0 +1,38 @@
+# AI Frontier Notes 系列阅读地图
+
+> **AI 新技术深度调研与工程拆解 — 每篇从"朴素方案为什么不行"讲到真实工程落地**
+>
+> 调研方法：多 Agent 并行搜索 → 源去重 → 声明提取 → 三票制对抗验证 → 综合报告
+
+## 中文版 · 阅读顺序
+
+| 系列 | 篇 | 标题 | 一句话 |
+|------|----|------|--------|
+| **Loop Engineering** | 01 | [Loop Engineering](zh/01-loop-engineering.md) | 从"我来 prompt"到"系统替我 prompt"的范式跳跃 |
+
+## English · Reading Order
+
+| Series | # | Title | One-liner |
+|--------|---|-------|-----------|
+| **Loop Engineering** | 01 | [Loop Engineering](en/01-loop-engineering.md) | From "I prompt the agent" to "the system prompts the agent" |
+
+## 按"我想了解 X"反查
+
+- **什么是 Loop Engineering**：01
+- **Boris Cherny / Addy Osmani 说了什么**：01 § 问题陈述
+- **Loop 的五大构件**：01 § 五大构件
+- **Loop 和 Harness 的关系**：01 § 概念栈
+- **ReAct 模式**：01 § 学术根基
+- **控制论 + Agent**：01 § 学术根基 · McGill
+- **Loop 的工程陷阱**：01 § 工程陷阱
+
+## 系列说明
+
+- **调研方法**：每篇文章基于多 Agent 并行深度调研，事实性声明经三票制对抗验证
+- **写作风格**：继承 [building-an-agent-harness](https://github.com/sky54laozhu/building-an-agent-harness) 系列风格
+- **前序系列**：[18 篇 Agent Harness 工程拆解](https://github.com/sky54laozhu/building-an-agent-harness/blob/master/docs/blog/reading-map.md)
+
+## 仓库 / 反馈
+
+- 源码仓库：[sky54laozhu/ai-frontier-notes](https://github.com/sky54laozhu/ai-frontier-notes)
+- 邮件：sky54laozhu@163.com / sky54laozhu@gmail.com

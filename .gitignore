@@ -1,0 +1,6 @@
+.DS_Store
+.claude/
+*.swp
+*.swo
+*~
+node_modules/
