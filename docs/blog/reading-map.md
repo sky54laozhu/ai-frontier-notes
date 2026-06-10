@@ -12,6 +12,7 @@
 | | 02 | [Loop Engineering 实战](zh/02-loop-engineering-in-practice.md) | 从零用 Loop 造一个自动 Bug 修复系统 |
 | | 03 | [Hello World: 星标监控](zh/03-loop-hello-world-star-tracker.md) | 30 行脚本 + 一条命令，10 分钟造你的第一个 Loop |
 | | 04 | [Loop-Driven Development](zh/04-loop-driven-development.md) | 用 5 个 Loop 跑完从 Spec 到验收的全过程 |
+| | 05 | [Token 经济学](zh/05-token-optimization.md) | Claude Code 全流程开发的成本优化手册 |
 
 ## English · Reading Order
 
@@ -21,6 +22,7 @@
 | | 02 | [Loop Engineering in Practice](en/02-loop-engineering-in-practice.md) | Building an auto bug-fix system step by step |
 | | 03 | [Hello World: Star Tracker](en/03-loop-hello-world-star-tracker.md) | 30 lines + one command, your first Loop in 10 minutes |
 | | 04 | [Loop-Driven Development](zh/04-loop-driven-development.md) | 5 Loops from Spec to acceptance, full lifecycle |
+| | 05 | [Token Economics](en/05-token-optimization.md) | Cost optimization playbook for full-lifecycle Claude Code dev |
 
 ## 按"我想了解 X"反查
 
@@ -41,6 +43,14 @@
 - **Spec 到验收的五阶段**：04 § 核心思路
 - **人类门禁放在哪里**：04 § 五个 Loop 的编排
 - **Loop-Driven Development**：04
+- **Token 怎么省**：05
+- **Claude Code 成本优化**：05
+- **模型怎么选（Opus/Sonnet/Haiku）**：05 § 策略一
+- **Prompt Cache 怎么用**：05 § 策略四
+- **Subagent 什么时候用**：05 § 策略三
+- **/compact 和 /clear 的区别**：05 § 策略二
+- **Thinking Token 怎么控制**：05 § 策略五
+- **CLAUDE.md 多长合适**：05 § 策略二
 
 ## 系列说明
 

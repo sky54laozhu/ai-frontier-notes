@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 440" font-family="-apple-system, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif" font-size="13" role="img" aria-labelledby="t-sr d-sr">
+  <title id="t-sr">七条规则的优先级与适用场景</title>
+  <desc id="d-sr">七条 Token 优化规则按节省幅度从高到低排列，每条标注适用场景和操作方式。前三条是高杠杆规则（30-80% 节省），后四条是卫生习惯（持续收益）。</desc>
+  <style>
+    .rule-row { rx: 8; stroke-width: 1; }
+    .rule-num { fill: #fff; font-weight: 800; font-size: 16px; text-anchor: middle; }
+    .rule-title { fill: #1a2233; font-weight: 700; font-size: 13px; }
+    .rule-when { fill: #666; font-size: 11px; }
+    .rule-cmd { fill: #4f97ff; font-size: 11px; font-family: 'SF Mono', 'Fira Code', monospace; }
+    .save-bar { rx: 4; }
+    .save-label { fill: #fff; font-weight: 700; font-size: 10px; text-anchor: middle; }
+    .divider { stroke: #e5e7eb; stroke-width: 1; }
+    .anno { fill: #888; font-size: 11px; text-anchor: middle; }
+    .section-label { fill: #1a2233; font-weight: 700; font-size: 12px; }
+  </style>
+
+  <rect x="0" y="0" width="820" height="440" fill="#fafbfc" rx="8"/>
+  <text x="410" y="28" text-anchor="middle" fill="#1a2233" font-size="16" font-weight="600">七条规则速查 — 按节省幅度排列</text>
+
+  <!-- Section: High Leverage -->
+  <text x="30" y="56" class="section-label">高杠杆（单条 30-80% 节省）</text>
+
+  <!-- Rule 1: Thinking Token -->
+  <rect x="20" y="66" width="780" height="48" class="rule-row" fill="#fff" stroke="#e5e7eb"/>
+  <rect x="24" y="70" width="36" height="40" rx="8" fill="#c75050"/>
+  <text x="42" y="96" class="rule-num">1</text>
+  <text x="72" y="86" class="rule-title">Thinking Token 限 1 万</text>
+  <text x="72" y="102" class="rule-when">Build / Review / Accept 阶段</text>
+  <text x="380" y="94" class="rule-cmd">MAX_THINKING_TOKENS=10000</text>
+  <!-- Save bar -->
+  <rect x="610" y="78" width="180" height="24" class="save-bar" fill="#c75050"/>
+  <text x="700" y="94" class="save-label">30-40%</text>
+
+  <!-- Rule 2: Model Tiering -->
+  <rect x="20" y="120" width="780" height="48" class="rule-row" fill="#fff" stroke="#e5e7eb"/>
+  <rect x="24" y="124" width="36" height="40" rx="8" fill="#4f97ff"/>
+  <text x="42" y="150" class="rule-num">2</text>
+  <text x="72" y="140" class="rule-title">分阶段选模型: Opus → Sonnet → Haiku</text>
+  <text x="72" y="156" class="rule-when">始终（最大成本杠杆）</text>
+  <text x="380" y="148" class="rule-cmd">/model sonnet  /model haiku</text>
+  <rect x="610" y="132" width="180" height="24" class="save-bar" fill="#4f97ff"/>
+  <text x="700" y="148" class="save-label">40-80%</text>
+
+  <!-- Rule 3: /clear per phase -->
+  <rect x="20" y="174" width="780" height="48" class="rule-row" fill="#fff" stroke="#e5e7eb"/>
+  <rect x="24" y="178" width="36" height="40" rx="8" fill="#7ab2ff"/>
+  <text x="42" y="204" class="rule-num">3</text>
+  <text x="72" y="194" class="rule-title">每个 Phase 独立 /clear</text>
+  <text x="72" y="210" class="rule-when">切阶段时（phase 间的信息靠文件传递）</text>
+  <text x="380" y="202" class="rule-cmd">/clear</text>
+  <rect x="610" y="186" width="180" height="24" class="save-bar" fill="#7ab2ff"/>
+  <text x="700" y="202" class="save-label">60-70%</text>
+
+  <!-- Section: Hygiene -->
+  <line x1="20" y1="236" x2="800" y2="236" class="divider"/>
+  <text x="30" y="256" class="section-label">卫生习惯（持续复合收益）</text>
+
+  <!-- Rule 4: /compact at 40-50% -->
+  <rect x="20" y="266" width="780" height="42" class="rule-row" fill="#fff" stroke="#e5e7eb"/>
+  <rect x="24" y="270" width="30" height="34" rx="6" fill="#0a7c2e"/>
+  <text x="39" y="292" fill="#fff" font-weight="700" font-size="13" text-anchor="middle">4</text>
+  <text x="66" y="286" class="rule-title">40-50% 上下文时主动 /compact</text>
+  <text x="66" y="300" class="rule-when">长 session 中（不要等到 83.5% 自动触发）</text>
+  <rect x="610" y="275" width="120" height="22" class="save-bar" fill="#0a7c2e"/>
+  <text x="670" y="290" class="save-label">~47%</text>
+
+  <!-- Rule 5: CLAUDE.md < 200 lines -->
+  <rect x="20" y="314" width="780" height="42" class="rule-row" fill="#fff" stroke="#e5e7eb"/>
+  <rect x="24" y="318" width="30" height="34" rx="6" fill="#e8a838"/>
+  <text x="39" y="340" fill="#fff" font-weight="700" font-size="13" text-anchor="middle">5</text>
+  <text x="66" y="334" class="rule-title">CLAUDE.md &lt; 200 行</text>
+  <text x="66" y="348" class="rule-when">项目配置时（每轮对话都带着它，越短越省）</text>
+  <rect x="610" y="323" width="100" height="22" class="save-bar" fill="#e8a838"/>
+  <text x="660" y="338" class="save-label">持续</text>
+
+  <!-- Rule 6: Subagent for heavy I/O -->
+  <rect x="20" y="362" width="780" height="42" class="rule-row" fill="#fff" stroke="#e5e7eb"/>
+  <rect x="24" y="366" width="30" height="34" rx="6" fill="#e8a838"/>
+  <text x="39" y="388" fill="#fff" font-weight="700" font-size="13" text-anchor="middle">6</text>
+  <text x="66" y="382" class="rule-title">重 I/O 任务用 Subagent</text>
+  <text x="66" y="396" class="rule-when">跑测试、分析日志、探索代码（> 3 个大文件读取）</text>
+  <rect x="610" y="371" width="100" height="22" class="save-bar" fill="#e8a838"/>
+  <text x="660" y="386" class="save-label">变量大</text>
+
+  <!-- Rule 7: /clear after idle -->
+  <rect x="20" y="398" width="780" height="36" class="rule-row" fill="#fff" stroke="#e5e7eb"/>
+  <rect x="24" y="401" width="30" height="30" rx="6" fill="#9aa0ad"/>
+  <text x="39" y="421" fill="#fff" font-weight="700" font-size="13" text-anchor="middle">7</text>
+  <text x="66" y="417" class="rule-title">闲置 > 5 分钟后用 /clear（不用 /compact）</text>
+  <text x="400" y="417" class="rule-when">Cache 过期后 compact = 全价重处理</text>
+  <rect x="610" y="405" width="120" height="22" class="save-bar" fill="#9aa0ad"/>
+  <text x="670" y="420" class="save-label">避免浪费</text>
+</svg>

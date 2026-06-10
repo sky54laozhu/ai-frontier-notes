@@ -14,7 +14,7 @@
 
 ## Status
 
-🚧 **In progress** · 4 articles published, more coming.
+🚧 **In progress** · 5 articles published, more coming.
 
 ## At a glance
 
@@ -22,6 +22,7 @@
 - **02: Loop Engineering 实战** — 从零用 Loop 造一个自动 Bug 修复系统
 - **03: Hello World 星标监控** — 30 行脚本 + 一条命令，10 分钟造你的第一个 Loop
 - **04: Loop-Driven Development** — 用 5 个 Loop 跑完从 Spec 到验收的全过程
+- **05: Token 经济学** — Claude Code 全流程开发的成本优化手册
 - **调研方法**：多 Agent 并行搜索 → 源去重 → 声明提取 → 三票制对抗验证 → 综合报告
 - **写作风格**：问题陈述 → 朴素方案为什么不行 → 核心方案 → 实现要点 → 反直觉结论
 
@@ -33,6 +34,7 @@
 | 02 | [Loop Engineering 实战](docs/blog/zh/02-loop-engineering-in-practice.md) | 2026-06-10 | ✅ Published |
 | 03 | [Hello World: 星标监控](docs/blog/zh/03-loop-hello-world-star-tracker.md) | 2026-06-10 | ✅ Published |
 | 04 | [Loop-Driven Development](docs/blog/zh/04-loop-driven-development.md) | 2026-06-10 | ✅ Published |
+| 05 | [Token 经济学](docs/blog/zh/05-token-optimization.md) | 2026-06-10 | ✅ Published |
 
 ## Repo layout
 

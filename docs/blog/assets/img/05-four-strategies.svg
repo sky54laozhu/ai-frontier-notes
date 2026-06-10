@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 420" font-family="-apple-system, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif" font-size="13" role="img" aria-labelledby="t-fs d-fs">
+  <title id="t-fs">Token 优化四策略总览</title>
+  <desc id="d-fs">四个核心策略按影响力排序：模型分层（40-80%）、上下文卫生（47-70%）、Subagent 隔离（变量大）、Prompt Cache 保温（90% 折扣）。中心是成本公式。</desc>
+  <style>
+    .card { rx: 12; stroke-width: 1.5; }
+    .card-title { fill: #fff; font-weight: 700; font-size: 14px; text-anchor: middle; }
+    .card-sub { fill: rgba(255,255,255,.85); font-size: 11px; text-anchor: middle; }
+    .card-detail { fill: rgba(255,255,255,.75); font-size: 10px; text-anchor: middle; }
+    .save-badge { rx: 10; }
+    .save-text { fill: #fff; font-weight: 700; font-size: 11px; text-anchor: middle; }
+    .center-box { rx: 12; }
+    .formula { fill: #1a2233; font-size: 11px; text-anchor: middle; font-family: 'SF Mono', 'Fira Code', monospace; }
+    .anno { fill: #888; font-size: 11px; text-anchor: middle; }
+    .connector { stroke: #ccc; stroke-width: 1.5; stroke-dasharray: 4 3; fill: none; }
+  </style>
+
+  <rect x="0" y="0" width="860" height="420" fill="#fafbfc" rx="8"/>
+  <text x="430" y="30" text-anchor="middle" fill="#1a2233" font-size="16" font-weight="600">Token 优化四策略 — 按影响力排序</text>
+
+  <!-- Center: Cost Formula -->
+  <rect x="280" y="150" width="300" height="100" class="center-box" fill="#f0f4ff" stroke="#4f97ff" stroke-width="2"/>
+  <text x="430" y="175" fill="#4f97ff" font-weight="700" font-size="13" text-anchor="middle">Token 成本公式</text>
+  <text x="430" y="198" class="formula">每轮成本 = 上下文长度 x 输入单价</text>
+  <text x="430" y="215" class="formula">         + 输出长度 x 输出单价</text>
+  <text x="430" y="236" fill="#c75050" font-size="10" text-anchor="middle" font-weight="600">每发一条消息，整个历史重新发送 → 二次增长</text>
+
+  <!-- Strategy 1: Model Tiering (top-left) -->
+  <line x1="310" y1="150" x2="180" y2="110" class="connector"/>
+  <rect x="30" y="50" width="200" height="110" class="card" stroke="#4f97ff" fill="#4f97ff"/>
+  <text x="80" y="68" fill="rgba(255,255,255,.6)" font-size="28" font-weight="800">01</text>
+  <text x="130" y="92" class="card-title">模型分层</text>
+  <text x="130" y="112" class="card-sub">Opus / Sonnet / Haiku</text>
+  <text x="130" y="130" class="card-detail">正确的活交给正确的模型</text>
+  <text x="130" y="146" class="card-detail">Haiku 比 Opus 便宜 5 倍</text>
+  <rect x="75" y="163" width="110" height="22" class="save-badge" fill="#0a7c2e"/>
+  <text x="130" y="178" class="save-text">省 40-80%</text>
+
+  <!-- Strategy 2: Context Hygiene (top-right) -->
+  <line x1="550" y1="150" x2="680" y2="110" class="connector"/>
+  <rect x="630" y="50" width="200" height="110" class="card" stroke="#7ab2ff" fill="#7ab2ff"/>
+  <text x="680" y="68" fill="rgba(255,255,255,.6)" font-size="28" font-weight="800">02</text>
+  <text x="730" y="92" class="card-title">上下文卫生</text>
+  <text x="730" y="112" class="card-sub">/clear + /compact + CLAUDE.md</text>
+  <text x="730" y="130" class="card-detail">短 session 代替 mega-session</text>
+  <text x="730" y="146" class="card-detail">$2.87/session → $0.94/session</text>
+  <rect x="675" y="163" width="110" height="22" class="save-badge" fill="#0a7c2e"/>
+  <text x="730" y="178" class="save-text">省 47-70%</text>
+
+  <!-- Strategy 3: Subagent Isolation (bottom-left) -->
+  <line x1="310" y1="250" x2="180" y2="290" class="connector"/>
+  <rect x="30" y="260" width="200" height="110" class="card" stroke="#e8a838" fill="#e8a838"/>
+  <text x="80" y="278" fill="rgba(255,255,255,.6)" font-size="28" font-weight="800">03</text>
+  <text x="130" y="302" class="card-title">Subagent 隔离</text>
+  <text x="130" y="322" class="card-sub">噪声留在子上下文</text>
+  <text x="130" y="340" class="card-detail">测试输出 3000 行 → 返回 1 行</text>
+  <text x="130" y="356" class="card-detail">主上下文省 ~99% 噪声</text>
+  <rect x="68" y="373" width="124" height="22" class="save-badge" fill="#0a7c2e"/>
+  <text x="130" y="388" class="save-text">主上下文省 98-99%</text>
+
+  <!-- Strategy 4: Prompt Cache (bottom-right) -->
+  <line x1="550" y1="250" x2="680" y2="290" class="connector"/>
+  <rect x="630" y="260" width="200" height="110" class="card" stroke="#0a7c2e" fill="#0a7c2e"/>
+  <text x="680" y="278" fill="rgba(255,255,255,.6)" font-size="28" font-weight="800">04</text>
+  <text x="730" y="302" class="card-title">Cache 保温</text>
+  <text x="730" y="322" class="card-sub">缓存 Token 只花 1/10 价格</text>
+  <text x="730" y="340" class="card-detail">5 分钟 TTL，命中即续期</text>
+  <text x="730" y="356" class="card-detail">闲置 > 5min 后用 /clear 不用 /compact</text>
+  <rect x="675" y="373" width="110" height="22" class="save-badge" fill="#c75050"/>
+  <text x="730" y="388" class="save-text">90% 隐藏折扣</text>
+
+  <!-- Bonus: Thinking Token -->
+  <rect x="320" y="280" width="220" height="48" rx="10" fill="#fff" stroke="#c75050" stroke-width="1.5"/>
+  <text x="430" y="300" fill="#c75050" font-weight="700" font-size="12" text-anchor="middle">+Bonus: Thinking Token 上限 1 万</text>
+  <text x="430" y="318" fill="#c75050" font-size="11" text-anchor="middle">单独省 30-40%（砍最贵的输出 Token）</text>
+
+  <text x="430" y="410" class="anno">四策略 + Thinking 上限组合使用，总成本可降 60-70%</text>
+</svg>

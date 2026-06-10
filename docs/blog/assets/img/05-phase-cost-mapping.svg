@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" font-family="-apple-system, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif" font-size="13" role="img" aria-labelledby="t-pcm d-pcm">
+  <title id="t-pcm">LDD 五阶段的成本优化映射</title>
+  <desc id="d-pcm">五个 LDD 阶段分别映射最优模型和策略：Spec/Plan 用 Opus（深度推理），Build 用 Sonnet + Subagent（编码主力），Review 用 Sonnet（diff 审查），Accept 用 Haiku（简单验证）。显示优化前后成本对比。</desc>
+  <style>
+    .phase { rx: 10; stroke-width: 1.5; }
+    .phase-label { fill: #fff; font-weight: 700; font-size: 14px; text-anchor: middle; }
+    .phase-sub { fill: rgba(255,255,255,.85); font-size: 10.5px; text-anchor: middle; }
+    .model-badge { rx: 8; stroke-width: 1; }
+    .model-text { font-weight: 600; font-size: 10px; text-anchor: middle; }
+    .cost-before { fill: #c75050; font-size: 11px; text-anchor: middle; text-decoration: line-through; }
+    .cost-after { fill: #0a7c2e; font-weight: 700; font-size: 13px; text-anchor: middle; }
+    .strategy-tag { rx: 6; fill: #f0f4ff; stroke: #4f97ff; stroke-width: 1; }
+    .strategy-text { fill: #4f97ff; font-size: 9px; text-anchor: middle; font-weight: 600; }
+    .arrow { stroke: #9aa0ad; stroke-width: 2; fill: none; marker-end: url(#apcm); }
+    .anno { fill: #888; font-size: 11px; text-anchor: middle; }
+    .total-box { rx: 10; }
+  </style>
+  <defs>
+    <marker id="apcm" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#9aa0ad"/></marker>
+  </defs>
+
+  <rect x="0" y="0" width="900" height="380" fill="#fafbfc" rx="8"/>
+  <text x="450" y="28" text-anchor="middle" fill="#1a2233" font-size="16" font-weight="600">LDD 五阶段 — 成本优化映射</text>
+
+  <!-- Phase 1: Spec -->
+  <rect x="20" y="55" width="150" height="65" class="phase" stroke="#1a2233" fill="#4f97ff"/>
+  <text x="95" y="82" class="phase-label">Spec</text>
+  <text x="95" y="100" class="phase-sub">拆需求</text>
+  <!-- Model badge -->
+  <rect x="50" y="130" width="90" height="22" class="model-badge" fill="#5b21b6" stroke="#5b21b6"/>
+  <text x="95" y="145" class="model-text" fill="#fff">Opus</text>
+  <!-- Strategy tags -->
+  <rect x="30" y="160" width="130" height="18" class="strategy-tag"/>
+  <text x="95" y="172" class="strategy-text">Thinking 默认 | 独立 Session</text>
+  <!-- Cost -->
+  <text x="95" y="202" class="cost-before">$0.80</text>
+  <text x="95" y="220" class="cost-after">$0.50</text>
+
+  <line x1="170" y1="87" x2="195" y2="87" class="arrow"/>
+
+  <!-- Phase 2: Plan -->
+  <rect x="195" y="55" width="150" height="65" class="phase" stroke="#1a2233" fill="#7ab2ff"/>
+  <text x="270" y="82" class="phase-label">Plan</text>
+  <text x="270" y="100" class="phase-sub">写方案</text>
+  <rect x="225" y="130" width="90" height="22" class="model-badge" fill="#5b21b6" stroke="#5b21b6"/>
+  <text x="270" y="145" class="model-text" fill="#fff">Opus</text>
+  <rect x="205" y="160" width="130" height="18" class="strategy-tag"/>
+  <text x="270" y="172" class="strategy-text">Thinking 默认 | 独立 Session</text>
+  <text x="270" y="202" class="cost-before">$0.60</text>
+  <text x="270" y="220" class="cost-after">$0.40</text>
+
+  <line x1="345" y1="87" x2="370" y2="87" class="arrow"/>
+
+  <!-- Phase 3: Build (largest) -->
+  <rect x="370" y="55" width="180" height="65" class="phase" stroke="#1a2233" fill="#0a7c2e"/>
+  <text x="460" y="82" class="phase-label">Build</text>
+  <text x="460" y="100" class="phase-sub">写代码（Token 消耗最大）</text>
+  <rect x="405" y="130" width="110" height="22" class="model-badge" fill="#2563eb" stroke="#2563eb"/>
+  <text x="460" y="145" class="model-text" fill="#fff">Sonnet</text>
+  <rect x="380" y="160" width="160" height="18" class="strategy-tag"/>
+  <text x="460" y="172" class="strategy-text">Thinking 1 万 | 每任务 Session | Subagent</text>
+  <text x="460" y="202" class="cost-before">$8.00</text>
+  <text x="460" y="220" class="cost-after">$3.20</text>
+
+  <line x1="550" y1="87" x2="575" y2="87" class="arrow"/>
+
+  <!-- Phase 4: Review -->
+  <rect x="575" y="55" width="150" height="65" class="phase" stroke="#1a2233" fill="#e8a838"/>
+  <text x="650" y="82" class="phase-label">Review</text>
+  <text x="650" y="100" class="phase-sub">审代码</text>
+  <rect x="605" y="130" width="90" height="22" class="model-badge" fill="#2563eb" stroke="#2563eb"/>
+  <text x="650" y="145" class="model-text" fill="#fff">Sonnet</text>
+  <rect x="585" y="160" width="130" height="18" class="strategy-tag"/>
+  <text x="650" y="172" class="strategy-text">Thinking 1 万 | diff only</text>
+  <text x="650" y="202" class="cost-before">$1.50</text>
+  <text x="650" y="220" class="cost-after">$0.60</text>
+
+  <line x1="725" y1="87" x2="750" y2="87" class="arrow"/>
+
+  <!-- Phase 5: Accept -->
+  <rect x="750" y="55" width="130" height="65" class="phase" stroke="#1a2233" fill="#1a2233"/>
+  <text x="815" y="82" class="phase-label">Accept</text>
+  <text x="815" y="100" class="phase-sub">验收</text>
+  <rect x="775" y="130" width="80" height="22" class="model-badge" fill="#059669" stroke="#059669"/>
+  <text x="815" y="145" class="model-text" fill="#fff">Haiku</text>
+  <rect x="765" y="160" width="100" height="18" class="strategy-tag"/>
+  <text x="815" y="172" class="strategy-text">Thinking 5000</text>
+  <text x="815" y="202" class="cost-before">$0.80</text>
+  <text x="815" y="220" class="cost-after">$0.15</text>
+
+  <!-- Total comparison -->
+  <rect x="200" y="260" width="240" height="60" class="total-box" fill="#fff" stroke="#c75050" stroke-width="2"/>
+  <text x="320" y="282" fill="#c75050" font-weight="700" font-size="13" text-anchor="middle">优化前（全 Opus + Mega Session）</text>
+  <text x="320" y="304" fill="#c75050" font-size="20" font-weight="800" text-anchor="middle">~$11.70</text>
+
+  <text x="450" y="295" fill="#1a2233" font-size="20" font-weight="700" text-anchor="middle">→</text>
+
+  <rect x="470" y="260" width="240" height="60" class="total-box" fill="#e8f5ec" stroke="#0a7c2e" stroke-width="2"/>
+  <text x="590" y="282" fill="#0a7c2e" font-weight="700" font-size="13" text-anchor="middle">优化后（分模型 + 分 Session）</text>
+  <text x="590" y="304" fill="#0a7c2e" font-size="20" font-weight="800" text-anchor="middle">~$4.85</text>
+
+  <rect x="370" y="335" width="170" height="28" rx="14" fill="#0a7c2e"/>
+  <text x="455" y="354" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">省 59%</text>
+
+  <text x="450" y="375" class="anno">Build 阶段占总成本 66%，是优化重点 — Sonnet + 短 Session + Subagent 隔离</text>
+</svg>
