@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 380" font-family="-apple-system, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif" font-size="13" role="img" aria-labelledby="t-pipe d-pipe">
+  <title id="t-pipe">Loop-Driven Development 五阶段流水线</title>
+  <desc id="t-pipe">五个 Loop 串联：Spec Loop → Plan Loop → Build Loop → Review Loop → Accept Loop。Spec 和 Plan 之间有人类门禁确认，Build 到 Accept 全自动。每个阶段标注输入、输出。</desc>
+  <style>
+    .phase { rx: 12; stroke-width: 1.5; }
+    .phase-label { fill: #fff; font-weight: 700; font-size: 15px; text-anchor: middle; }
+    .phase-sub { fill: rgba(255,255,255,.85); font-size: 11px; text-anchor: middle; }
+    .output { fill: #333; font-size: 10.5px; text-anchor: middle; }
+    .gate { rx: 6; }
+    .gate-label { fill: #fff; font-weight: 600; font-size: 10px; text-anchor: middle; }
+    .auto-label { fill: #0a7c2e; font-weight: 600; font-size: 10px; text-anchor: middle; }
+    .flow { stroke: #1a2233; stroke-width: 2; fill: none; marker-end: url(#ap); }
+    .flow-auto { stroke: #0a7c2e; stroke-width: 2; fill: none; marker-end: url(#ap-g); }
+    .anno { fill: #888; font-size: 11px; text-anchor: middle; }
+  </style>
+  <defs>
+    <marker id="ap" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#1a2233"/></marker>
+    <marker id="ap-g" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#0a7c2e"/></marker>
+  </defs>
+
+  <rect x="0" y="0" width="920" height="380" fill="#fafbfc" rx="8"/>
+  <text x="460" y="30" text-anchor="middle" fill="#1a2233" font-size="16" font-weight="600">Loop-Driven Development — 五阶段流水线</text>
+
+  <!-- Phase 1: Spec -->
+  <rect x="30" y="70" width="140" height="80" class="phase" stroke="#1a2233" fill="#4f97ff"/>
+  <text x="100" y="102" class="phase-label">Phase 1</text>
+  <text x="100" y="120" class="phase-sub">Spec Loop</text>
+  <text x="100" y="136" class="phase-sub">拆需求</text>
+  <text x="100" y="175" class="output">↓ docs/spec.md</text>
+
+  <!-- Gate 1: Human -->
+  <line x1="170" y1="110" x2="205" y2="110" class="flow"/>
+  <rect x="205" y="95" width="52" height="30" class="gate" fill="#c75050"/>
+  <text x="231" y="114" class="gate-label">人类确认</text>
+  <line x1="257" y1="110" x2="290" y2="110" class="flow"/>
+
+  <!-- Phase 2: Plan -->
+  <rect x="290" y="70" width="140" height="80" class="phase" stroke="#1a2233" fill="#7ab2ff"/>
+  <text x="360" y="102" class="phase-label">Phase 2</text>
+  <text x="360" y="120" class="phase-sub">Plan Loop</text>
+  <text x="360" y="136" class="phase-sub">写方案</text>
+  <text x="360" y="175" class="output">↓ docs/plan.md</text>
+
+  <!-- Gate 2: Human -->
+  <line x1="430" y1="110" x2="465" y2="110" class="flow"/>
+  <rect x="465" y="95" width="52" height="30" class="gate" fill="#c75050"/>
+  <text x="491" y="114" class="gate-label">人类确认</text>
+  <line x1="517" y1="110" x2="550" y2="110" class="flow"/>
+
+  <!-- Phase 3: Build -->
+  <rect x="550" y="70" width="140" height="80" class="phase" stroke="#1a2233" fill="#0a7c2e"/>
+  <text x="620" y="102" class="phase-label">Phase 3</text>
+  <text x="620" y="120" class="phase-sub">Build Loop</text>
+  <text x="620" y="136" class="phase-sub">写代码</text>
+  <text x="620" y="175" class="output">↓ src/ + tests/</text>
+
+  <!-- Auto arrow to Phase 4 — goes down then right -->
+  <line x1="620" y1="150" x2="620" y2="230" class="flow-auto"/>
+  <text x="640" y="200" class="auto-label">自动</text>
+
+  <!-- Phase 4: Review -->
+  <rect x="550" y="230" width="140" height="80" class="phase" stroke="#1a2233" fill="#e8a838"/>
+  <text x="620" y="262" class="phase-label">Phase 4</text>
+  <text x="620" y="280" class="phase-sub">Review Loop</text>
+  <text x="620" y="296" class="phase-sub">审代码</text>
+  <text x="620" y="335" class="output">↓ docs/review.md</text>
+
+  <!-- Auto arrow to Phase 5 -->
+  <line x1="690" y1="270" x2="750" y2="270" class="flow-auto"/>
+  <text x="720" y="260" class="auto-label">自动</text>
+
+  <!-- Phase 5: Accept -->
+  <rect x="750" y="230" width="140" height="80" class="phase" stroke="#1a2233" fill="#1a2233"/>
+  <text x="820" y="262" class="phase-label">Phase 5</text>
+  <text x="820" y="280" class="phase-sub">Accept Loop</text>
+  <text x="820" y="296" class="phase-sub">验收</text>
+  <text x="820" y="335" class="output">↓ docs/acceptance.md</text>
+
+  <!-- Result badge -->
+  <rect x="780" y="340" width="80" height="26" rx="13" fill="#0a7c2e"/>
+  <text x="820" y="358" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">🎉 通过</text>
+
+  <!-- Legend -->
+  <rect x="30" y="340" width="12" height="12" rx="3" fill="#c75050"/>
+  <text x="48" y="351" fill="#666" font-size="11">= 人类门禁（必须确认才继续）</text>
+  <text x="280" y="351" fill="#0a7c2e" font-size="11" font-weight="600">自动</text>
+  <text x="310" y="351" fill="#666" font-size="11">= 无需人类介入</text>
+
+  <text x="460" y="375" class="anno">人类只在 Spec 和 Plan 两处介入（~10 分钟），Build→Review→Accept 全自动（~30 分钟）</text>
+</svg>

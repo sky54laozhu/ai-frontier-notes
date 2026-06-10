@@ -29,11 +29,7 @@ canonical: https://github.com/sky54laozhu/ai-frontier-notes/blob/main/docs/blog/
 
 把这五个阶段塞进一个 Loop 是错误的——就像把"设计建筑图纸"和"砌砖"塞进同一个工序。正确做法是**每个阶段一个 Loop，前一个 Loop 的输出是后一个 Loop 的输入**：
 
-```
-Spec Loop → Plan Loop → Build Loop → Review Loop → Accept Loop
-    ↓           ↓           ↓            ↓            ↓
-  需求文档    任务列表    可运行代码    审查通过    验收报告
-```
+![五阶段流水线](../assets/img/04-five-phase-pipeline.svg)
 
 每个 Loop 内部可以多轮迭代（比如 Build Loop 对每个任务循环"写代码 → 跑测试 → 测试挂了 → 修 → 再跑"），但 Loop 之间是**串行的、有门禁的**——前一个阶段的输出必须经过确认才进入下一个阶段。
 
@@ -195,17 +191,7 @@ Task 8: [S] Dockerfile + docker-compose.yml
 
 **Build Loop 内部的子循环**：
 
-```
-对于 Task 3 (POST /api/shorten):
-
-  Round 1:
-    写代码 → 跑测试 → 2 个测试挂了（短码冲突没处理）
-    ↓
-  Round 2:
-    读错误信息 → 加冲突重试逻辑 → 跑测试 → 全通过 ✓
-    ↓
-  提交 → 标记完成 → 进入 Task 4
-```
+![Build Loop 内部循环](../assets/img/04-build-loop-inner.svg)
 
 **这里不需要人类门禁**——测试通过是客观标准。但如果 3 轮都失败，Loop 会停下来（写到 Memory），等人类介入。
 
@@ -322,29 +308,7 @@ Task 8: [S] Dockerfile + docker-compose.yml
 
 ## 五个 Loop 的编排
 
-把五个 Phase 串起来，完整的 Loop-Driven Development 流水线：
-
-```
-┌─────────────────────────────────────────────────────────┐
-│                  Loop-Driven Development                │
-│                                                         │
-│  Phase 1        Phase 2        Phase 3                  │
-│  ┌──────┐      ┌──────┐      ┌──────────┐              │
-│  │ Spec │─门禁→│ Plan │─门禁→│  Build   │              │
-│  │ Loop │  人类 │ Loop │  人类 │  Loop    │              │
-│  └──────┘ 确认  └──────┘ 确认  └────┬─────┘              │
-│                                     │                   │
-│                              Phase 4 ↓         Phase 5  │
-│                              ┌──────────┐     ┌───────┐ │
-│                              │  Review  │────→│Accept │ │
-│                              │  Loop    │自动  │ Loop  │ │
-│                              └──────────┘     └───────┘ │
-│                                                   │     │
-│                                              🎉 验收通过 │
-└─────────────────────────────────────────────────────────┘
-
-门禁 = 人类确认      自动 = 无需人类介入
-```
+把五个 Phase 串起来，完整的 Loop-Driven Development 流水线（见 Phase 流水线配图）。
 
 **关键设计决策**：
 
@@ -441,6 +405,14 @@ linkshort/
 ```
 
 **注意 docs/ 目录有四个文件**——每个门禁阶段一个。这四个文件就是 Loop-Driven Development 的"可审计链"：从需求到验收，每一步都有文档、可追溯、可回放。
+
+---
+
+## 配图
+
+1. ![五阶段流水线](../assets/img/04-five-phase-pipeline.svg)
+2. ![Build Loop 内部循环](../assets/img/04-build-loop-inner.svg)
+3. ![阶段间信息传递：文件链](../assets/img/04-file-output-chain.svg)
 
 ---
 
