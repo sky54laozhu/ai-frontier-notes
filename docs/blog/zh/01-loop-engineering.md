@@ -1,9 +1,9 @@
 ---
-title: "Loop Engineering —— 从"我来 prompt"到"系统替我 prompt"的范式跳跃"
+title: 'Loop Engineering —— 从"我来 prompt"到"系统替我 prompt"的范式跳跃'
 slug: loop-engineering
 date: 2026-06-10
 keywords: [Loop Engineering, Agent Loop, 自主代理, Boris Cherny, Addy Osmani, Claude Code, ReAct, 控制论, AI 工程]
-canonical: https://github.com/sky54laozhu/building-an-agent-harness/blob/master/docs/blog/zh/loop-engineering.md
+canonical: https://github.com/sky54laozhu/ai-frontier-notes/blob/main/docs/blog/zh/01-loop-engineering.md
 ---
 
 # Loop Engineering —— 从"我来 prompt"到"系统替我 prompt"的范式跳跃
