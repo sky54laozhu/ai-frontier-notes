@@ -14,11 +14,12 @@
 
 ## Status
 
-🚧 **In progress** · Series 01 published, more coming.
+🚧 **In progress** · 2 articles published, more coming.
 
 ## At a glance
 
-- **Series 01: Loop Engineering** — 从"我来 prompt"到"系统替我 prompt"的范式跳跃
+- **01: Loop Engineering** — 从"我来 prompt"到"系统替我 prompt"的范式跳跃
+- **02: Loop Engineering 实战** — 从零用 Loop 造一个自动 Bug 修复系统
 - **调研方法**：多 Agent 并行搜索 → 源去重 → 声明提取 → 三票制对抗验证 → 综合报告
 - **写作风格**：问题陈述 → 朴素方案为什么不行 → 核心方案 → 实现要点 → 反直觉结论
 
@@ -27,6 +28,7 @@
 | # | 主题 | 日期 | 状态 |
 |---|------|------|------|
 | 01 | [Loop Engineering](docs/blog/zh/01-loop-engineering.md) | 2026-06-10 | ✅ Published |
+| 02 | [Loop Engineering 实战](docs/blog/zh/02-loop-engineering-in-practice.md) | 2026-06-10 | ✅ Published |
 
 ## Repo layout
 
