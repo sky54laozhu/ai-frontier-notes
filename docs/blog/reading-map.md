@@ -10,6 +10,7 @@
 |------|----|------|--------|
 | **Loop Engineering** | 01 | [Loop Engineering](zh/01-loop-engineering.md) | 从"我来 prompt"到"系统替我 prompt"的范式跳跃 |
 | | 02 | [Loop Engineering 实战](zh/02-loop-engineering-in-practice.md) | 从零用 Loop 造一个自动 Bug 修复系统 |
+| | 03 | [Hello World: 星标监控](zh/03-loop-hello-world-star-tracker.md) | 30 行脚本 + 一条命令，10 分钟造你的第一个 Loop |
 
 ## English · Reading Order
 
@@ -17,6 +18,7 @@
 |--------|---|-------|-----------|
 | **Loop Engineering** | 01 | [Loop Engineering](en/01-loop-engineering.md) | From "I prompt the agent" to "the system prompts the agent" |
 | | 02 | [Loop Engineering in Practice](en/02-loop-engineering-in-practice.md) | Building an auto bug-fix system step by step |
+| | 03 | [Hello World: Star Tracker](en/03-loop-hello-world-star-tracker.md) | 30 lines + one command, your first Loop in 10 minutes |
 
 ## 按"我想了解 X"反查
 
@@ -27,7 +29,8 @@
 - **ReAct 模式**：01 § 学术根基
 - **控制论 + Agent**：01 § 学术根基 · McGill
 - **Loop 的工程陷阱**：01 § 工程陷阱
-- **怎么上手第一个 Loop**：02 § 下一步
+- **10 分钟第一个 Loop**：03
+- **怎么上手第一个 Loop**：03 → 02 § 下一步
 - **CLAUDE.md 怎么写**：02 § Step 1
 - **Maker/Checker 怎么拆**：02 § Step 3
 - **Loop 的调度方式选择**：02 § Step 5
