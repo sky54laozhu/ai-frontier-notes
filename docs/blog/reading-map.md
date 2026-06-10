@@ -13,6 +13,7 @@
 | | 03 | [Hello World: 星标监控](zh/03-loop-hello-world-star-tracker.md) | 30 行脚本 + 一条命令，10 分钟造你的第一个 Loop |
 | | 04 | [Loop-Driven Development](zh/04-loop-driven-development.md) | 用 5 个 Loop 跑完从 Spec 到验收的全过程 |
 | | 05 | [Token 经济学](zh/05-token-optimization.md) | Claude Code 全流程开发的成本优化手册 |
+| | 06 | [Claude Code 卡顿排查](zh/06-claude-code-stuck-guide.md) | 六大根因 + 诊断决策树 + 恢复工具箱 |
 
 ## English · Reading Order
 
@@ -23,6 +24,7 @@
 | | 03 | [Hello World: Star Tracker](en/03-loop-hello-world-star-tracker.md) | 30 lines + one command, your first Loop in 10 minutes |
 | | 04 | [Loop-Driven Development](zh/04-loop-driven-development.md) | 5 Loops from Spec to acceptance, full lifecycle |
 | | 05 | [Token Economics](en/05-token-optimization.md) | Cost optimization playbook for full-lifecycle Claude Code dev |
+| | 06 | [Claude Code Stuck Guide](en/06-claude-code-stuck-guide.md) | Six root causes + diagnosis flowchart + recovery toolkit |
 
 ## 按"我想了解 X"反查
 
@@ -51,6 +53,12 @@
 - **/compact 和 /clear 的区别**：05 § 策略二
 - **Thinking Token 怎么控制**：05 § 策略五
 - **CLAUDE.md 多长合适**：05 § 策略二
+- **Claude Code 卡住不动怎么办**：06
+- **Token 不涨但时间在走**：06 § 症状
+- **Stream 超时**：06 § 根因 1
+- **UI 假死（Ghost Freeze）**：06 § 根因 6
+- **卡顿诊断流程**：06 § 诊断决策树
+- **不要让 Claude 修自己的超时配置**：06 § 反模式警告
 
 ## 系列说明
 

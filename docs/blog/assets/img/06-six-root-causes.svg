@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 500" font-family="-apple-system, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif" font-size="13" role="img" aria-labelledby="t-rc d-rc">
+  <title id="t-rc">Claude Code 卡顿六大根因</title>
+  <desc id="d-rc">六个导致 Claude Code 卡住不动的根本原因：Stream 空闲超时、网络连接中断、大型工具输出、上下文窗口溢出、API 服务端故障、UI 渲染假死。</desc>
+  <style>
+    .card { rx: 12; stroke-width: 1.5; }
+    .card-title { fill: #fff; font-weight: 700; font-size: 14px; text-anchor: middle; }
+    .card-sub { fill: rgba(255,255,255,.85); font-size: 11px; text-anchor: middle; }
+    .card-detail { fill: rgba(255,255,255,.75); font-size: 10px; text-anchor: middle; }
+    .freq-badge { rx: 10; }
+    .freq-text { fill: #fff; font-weight: 700; font-size: 10px; text-anchor: middle; }
+    .center-box { rx: 12; }
+    .symptom { fill: #1a2233; font-size: 11px; text-anchor: middle; font-family: 'SF Mono', 'Fira Code', monospace; }
+    .anno { fill: #888; font-size: 11px; text-anchor: middle; }
+    .connector { stroke: #ccc; stroke-width: 1.5; stroke-dasharray: 4 3; fill: none; }
+  </style>
+
+  <rect x="0" y="0" width="860" height="500" fill="#fafbfc" rx="8"/>
+  <text x="430" y="30" text-anchor="middle" fill="#1a2233" font-size="16" font-weight="600">Claude Code 卡顿六大根因</text>
+
+  <!-- Center: Symptom -->
+  <rect x="280" y="180" width="300" height="100" class="center-box" fill="#fff3f3" stroke="#c75050" stroke-width="2"/>
+  <text x="430" y="205" fill="#c75050" font-weight="700" font-size="14" text-anchor="middle">核心症状</text>
+  <text x="430" y="228" class="symptom">时间在走 ⏱ Token 不涨 0</text>
+  <text x="430" y="248" class="symptom">Spinner 转圈但无任何输出</text>
+  <text x="430" y="268" fill="#888" font-size="10" text-anchor="middle">30 秒内 Token 不动 → 基本确认卡住</text>
+
+  <!-- Cause 1: Stream Idle Timeout (top-left) -->
+  <line x1="310" y1="185" x2="180" y2="130" class="connector"/>
+  <rect x="30" y="55" width="240" height="120" class="card" stroke="#c75050" fill="#c75050"/>
+  <text x="68" y="75" fill="rgba(255,255,255,.4)" font-size="28" font-weight="800">01</text>
+  <text x="150" y="98" class="card-title">Stream 空闲超时</text>
+  <text x="150" y="118" class="card-sub">HTTP 流式响应中断，客户端不报错</text>
+  <text x="150" y="136" class="card-detail">客户端缺少有效的 read timeout</text>
+  <text x="150" y="152" class="card-detail">可持续 5-30 分钟无任何反馈</text>
+  <rect x="95" y="158" width="110" height="20" class="freq-badge" fill="#1a2233"/>
+  <text x="150" y="172" class="freq-text">最常见 ★★★</text>
+
+  <!-- Cause 2: Network Issues (top-right) -->
+  <line x1="550" y1="185" x2="680" y2="130" class="connector"/>
+  <rect x="590" y="55" width="240" height="120" class="card" stroke="#e8a838" fill="#e8a838"/>
+  <text x="628" y="75" fill="rgba(255,255,255,.4)" font-size="28" font-weight="800">02</text>
+  <text x="710" y="98" class="card-title">网络连接中断</text>
+  <text x="710" y="118" class="card-sub">网络抖动 / tmux / SSH 长连接断开</text>
+  <text x="710" y="136" class="card-detail">底层连接断了但 UI 不知道</text>
+  <text x="710" y="152" class="card-detail">跨境网络 / VPN 场景更频繁</text>
+  <rect x="655" y="158" width="110" height="20" class="freq-badge" fill="#1a2233"/>
+  <text x="710" y="172" class="freq-text">常见 ★★☆</text>
+
+  <!-- Cause 3: Large Tool Output (middle-left) -->
+  <line x1="280" y1="230" x2="195" y2="260" class="connector"/>
+  <rect x="30" y="230" width="240" height="120" class="card" stroke="#e8a838" fill="#e8a838"/>
+  <text x="68" y="250" fill="rgba(255,255,255,.4)" font-size="28" font-weight="800">03</text>
+  <text x="150" y="273" class="card-title">大型工具输出</text>
+  <text x="150" y="293" class="card-sub">Glob/Read 返回巨量结果</text>
+  <text x="150" y="311" class="card-detail">5 分钟无有效数据 → OS 重置连接</text>
+  <text x="150" y="327" class="card-detail">Claude Code 未捕获此错误</text>
+  <rect x="95" y="333" width="110" height="20" class="freq-badge" fill="#1a2233"/>
+  <text x="150" y="347" class="freq-text">常见 ★★☆</text>
+
+  <!-- Cause 4: Context Overflow (middle-right) -->
+  <line x1="580" y1="230" x2="665" y2="260" class="connector"/>
+  <rect x="590" y="230" width="240" height="120" class="card" stroke="#7ab2ff" fill="#7ab2ff"/>
+  <text x="628" y="250" fill="rgba(255,255,255,.4)" font-size="28" font-weight="800">04</text>
+  <text x="710" y="273" class="card-title">上下文窗口溢出</text>
+  <text x="710" y="293" class="card-sub">auto-compact 触发压缩-膨胀循环</text>
+  <text x="710" y="311" class="card-detail">94%+ 使用率时高危</text>
+  <text x="710" y="327" class="card-detail">长对话后期容易触发</text>
+  <rect x="655" y="333" width="110" height="20" class="freq-badge" fill="#1a2233"/>
+  <text x="710" y="347" class="freq-text">偶发 ★☆☆</text>
+
+  <!-- Cause 5: API Server (bottom-left) -->
+  <line x1="350" y1="280" x2="220" y2="400" class="connector"/>
+  <rect x="30" y="395" width="240" height="85" class="card" stroke="#7ab2ff" fill="#7ab2ff"/>
+  <text x="68" y="415" fill="rgba(255,255,255,.4)" font-size="28" font-weight="800">05</text>
+  <text x="150" y="435" class="card-title">API 服务端故障</text>
+  <text x="150" y="453" class="card-sub">特定模型降级 / 排队等待</text>
+  <text x="150" y="468" class="card-detail">切换模型后通常恢复正常</text>
+
+  <!-- Cause 6: UI Ghost Freeze (bottom-right) -->
+  <line x1="510" y1="280" x2="640" y2="400" class="connector"/>
+  <rect x="590" y="395" width="240" height="85" class="card" stroke="#0a7c2e" fill="#0a7c2e"/>
+  <text x="628" y="415" fill="rgba(255,255,255,.4)" font-size="28" font-weight="800">06</text>
+  <text x="710" y="435" class="card-title">UI 渲染假死</text>
+  <text x="710" y="453" class="card-sub">结果已返回，spinner 未清除</text>
+  <text x="710" y="468" class="card-detail">按 Enter 后立刻恢复 — 最轻微</text>
+
+  <text x="430" y="492" class="anno">根因 1-3 占 80% 以上的卡顿事件 — 优先排查</text>
+</svg>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 520" font-family="-apple-system, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif" font-size="13" role="img" aria-labelledby="t-df d-df">
+  <title id="t-df">卡顿诊断流程图</title>
+  <desc id="d-df">从发现卡顿到定位根因的决策树：30 秒观察 → 按 Enter 试探 → 检查网络 → 检查工具输出 → 检查上下文使用率 → Stream 超时。</desc>
+  <style>
+    .step { rx: 12; stroke-width: 1.5; }
+    .step-text { fill: #fff; font-weight: 600; font-size: 12px; text-anchor: middle; }
+    .diamond { stroke-width: 1.5; }
+    .diamond-text { fill: #1a2233; font-weight: 600; font-size: 11px; text-anchor: middle; }
+    .result { rx: 8; }
+    .result-text { font-size: 11px; text-anchor: middle; font-weight: 600; }
+    .arrow { stroke: #555; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
+    .label { fill: #555; font-size: 10px; font-weight: 600; }
+    .anno { fill: #888; font-size: 11px; text-anchor: middle; }
+  </style>
+  <defs>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="860" height="520" fill="#fafbfc" rx="8"/>
+  <text x="430" y="30" text-anchor="middle" fill="#1a2233" font-size="16" font-weight="600">卡顿诊断决策树</text>
+
+  <!-- Step 0: Observe -->
+  <rect x="330" y="50" width="200" height="44" class="step" fill="#c75050" stroke="#c75050"/>
+  <text x="430" y="68" class="step-text">发现疑似卡顿</text>
+  <text x="430" y="82" fill="rgba(255,255,255,.8)" font-size="10" text-anchor="middle">时间走、Token 不动</text>
+  <path d="M430,94 L430,120" class="arrow"/>
+
+  <!-- Decision 1: 30s rule -->
+  <polygon points="430,120 530,155 430,190 330,155" fill="#fff3f3" stroke="#c75050" class="diamond"/>
+  <text x="430" y="152" class="diamond-text">等待 30 秒</text>
+  <text x="430" y="164" fill="#888" font-size="10" text-anchor="middle">Token 有变化？</text>
+
+  <!-- Yes: not stuck -->
+  <path d="M530,155 L620,155" class="arrow"/>
+  <text x="558" y="148" class="label">有变化</text>
+  <rect x="620" y="140" width="130" height="30" class="result" fill="#0a7c2e" stroke="#0a7c2e"/>
+  <text x="685" y="160" class="result-text" fill="#fff">正常 — 模型在思考</text>
+
+  <!-- No: proceed -->
+  <path d="M430,190 L430,220" class="arrow"/>
+  <text x="445" y="210" class="label">无变化</text>
+
+  <!-- Decision 2: Press Enter -->
+  <polygon points="430,220 530,255 430,290 330,255" fill="#f0f4ff" stroke="#4f97ff" class="diamond"/>
+  <text x="430" y="252" class="diamond-text">按 Enter 或</text>
+  <text x="430" y="264" fill="#888" font-size="10" text-anchor="middle">发一条消息试探</text>
+
+  <!-- Yes: UI ghost -->
+  <path d="M530,255 L620,255" class="arrow"/>
+  <text x="560" y="248" class="label">立刻恢复</text>
+  <rect x="620" y="240" width="130" height="30" class="result" fill="#0a7c2e" stroke="#0a7c2e"/>
+  <text x="685" y="260" class="result-text" fill="#fff">UI 假死 (#06)</text>
+
+  <!-- No: proceed -->
+  <path d="M430,290 L430,320" class="arrow"/>
+  <text x="445" y="310" class="label">无响应</text>
+
+  <!-- Decision 3: Recent tool call? -->
+  <polygon points="430,320 540,355 430,390 320,355" fill="#fff8ee" stroke="#e8a838" class="diamond"/>
+  <text x="430" y="349" class="diamond-text">刚执行过大型</text>
+  <text x="430" y="363" fill="#888" font-size="10" text-anchor="middle">工具调用？(Glob/Read)</text>
+
+  <!-- Yes: large output -->
+  <path d="M540,355 L620,355" class="arrow"/>
+  <text x="565" y="348" class="label">是</text>
+  <rect x="620" y="340" width="140" height="30" class="result" fill="#e8a838" stroke="#e8a838"/>
+  <text x="690" y="360" class="result-text" fill="#fff">大型工具输出 (#03)</text>
+
+  <!-- No: proceed -->
+  <path d="M430,390 L430,420" class="arrow"/>
+  <text x="445" y="410" class="label">否</text>
+
+  <!-- Decision 4: Context usage -->
+  <polygon points="430,420 530,450 430,480 330,450" fill="#f0f4ff" stroke="#7ab2ff" class="diamond"/>
+  <text x="430" y="447" class="diamond-text">上下文 > 90%?</text>
+  <text x="430" y="459" fill="#888" font-size="10" text-anchor="middle">长会话后期？</text>
+
+  <!-- Yes: context overflow -->
+  <path d="M530,450 L620,450" class="arrow"/>
+  <text x="565" y="443" class="label">是</text>
+  <rect x="620" y="435" width="150" height="30" class="result" fill="#7ab2ff" stroke="#7ab2ff"/>
+  <text x="695" y="455" class="result-text" fill="#fff">上下文溢出 (#04)</text>
+
+  <!-- No: stream timeout -->
+  <path d="M330,450 L220,450" class="arrow"/>
+  <text x="288" y="443" class="label">否</text>
+  <rect x="80" y="435" width="140" height="30" class="result" fill="#c75050" stroke="#c75050"/>
+  <text x="150" y="455" class="result-text" fill="#fff">Stream 超时 (#01)</text>
+
+  <!-- Side note: Network -->
+  <rect x="50" y="310" width="180" height="50" rx="8" fill="#fff" stroke="#e8a838" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="140" y="332" fill="#e8a838" font-size="11" text-anchor="middle" font-weight="600">附: 网络排查</text>
+  <text x="140" y="348" fill="#888" font-size="10" text-anchor="middle">tmux/SSH/VPN 环境优先检查 #02</text>
+
+  <text x="430" y="510" class="anno">按此流程 2 分钟内可定位根因 — 然后对症下药</text>
+</svg>
