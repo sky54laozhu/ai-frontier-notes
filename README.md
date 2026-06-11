@@ -14,7 +14,7 @@
 
 ## Status
 
-🚧 **In progress** · 5 articles published, more coming.
+🚧 **In progress** · 8 articles published, more coming.
 
 ## At a glance
 
@@ -23,6 +23,9 @@
 - **03: Hello World 星标监控** — 30 行脚本 + 一条命令，10 分钟造你的第一个 Loop
 - **04: Loop-Driven Development** — 用 5 个 Loop 跑完从 Spec 到验收的全过程
 - **05: Token 经济学** — Claude Code 全流程开发的成本优化手册
+- **06: Claude Code 卡顿排查** — 六大根因 + 诊断决策树 + 恢复工具箱
+- **07: 模型编排实战** — 让正确的模型在正确的阶段自动上场
+- **08: Dynamic Workflows 实战** — 从手写编排到 Claude 自己编排
 - **调研方法**：多 Agent 并行搜索 → 源去重 → 声明提取 → 三票制对抗验证 → 综合报告
 - **写作风格**：问题陈述 → 朴素方案为什么不行 → 核心方案 → 实现要点 → 反直觉结论
 
@@ -35,6 +38,9 @@
 | 03 | [Hello World: 星标监控](docs/blog/zh/03-loop-hello-world-star-tracker.md) | 2026-06-10 | ✅ Published |
 | 04 | [Loop-Driven Development](docs/blog/zh/04-loop-driven-development.md) | 2026-06-10 | ✅ Published |
 | 05 | [Token 经济学](docs/blog/zh/05-token-optimization.md) | 2026-06-10 | ✅ Published |
+| 06 | [Claude Code 卡顿排查](docs/blog/zh/06-claude-code-stuck-guide.md) | 2026-06-10 | ✅ Published |
+| 07 | [模型编排实战](docs/blog/zh/07-model-orchestration.md) | 2026-06-10 | ✅ Published |
+| 08 | [Dynamic Workflows 实战](docs/blog/zh/08-dynamic-workflows.md) | 2026-06-11 | ✅ Published |
 
 ## Repo layout
 
