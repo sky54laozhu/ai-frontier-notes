@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" font-family="-apple-system, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif" font-size="13" role="img" aria-labelledby="t-dwa d-dwa">
+  <title id="t-dwa">Dynamic Workflows 架构</title>
+  <desc id="d-dwa">用户请求 → Claude 生成 JS 脚本 → Runtime 后台执行 → N 个子 agent（各自独立上下文）→ 结果汇总回会话</desc>
+  <style>
+    .box { stroke-width: 2; rx: 10; }
+    .box-title { fill: #fff; font-weight: 700; font-size: 13px; text-anchor: middle; }
+    .box-sub { fill: rgba(255,255,255,.85); font-size: 10px; text-anchor: middle; }
+    .label { fill: #1a2233; font-size: 11px; text-anchor: middle; }
+    .label-sm { fill: #666; font-size: 10px; text-anchor: middle; }
+    .arrow { stroke: #666; stroke-width: 2; fill: none; marker-end: url(#ah); }
+    .arrow-d { stroke: #3a7bd5; stroke-width: 2; stroke-dasharray: 6 3; fill: none; marker-end: url(#ahb); }
+    .agent-box { fill: #fff; stroke: #4f97ff; stroke-width: 1.5; rx: 8; }
+    .ctx { fill: #eef4ff; stroke: #b0c8f0; stroke-width: 1; rx: 6; }
+  </style>
+  <defs>
+    <marker id="ah" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#666"/></marker>
+    <marker id="ahb" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#3a7bd5"/></marker>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="420" fill="#fafbfc" rx="8"/>
+  <text x="440" y="30" text-anchor="middle" fill="#1a2233" font-size="16" font-weight="600">Dynamic Workflows 架构 — 编排逻辑从人写变成 Claude 写</text>
+
+  <!-- Step 1: User -->
+  <rect x="30" y="60" width="140" height="70" class="box" fill="#4f97ff" stroke="#3a7bd5"/>
+  <text x="100" y="90" class="box-title">用户</text>
+  <text x="100" y="108" class="box-sub">自然语言描述任务</text>
+
+  <!-- Arrow 1 -->
+  <path d="M170,95 L220,95" class="arrow"/>
+  <text x="195" y="87" class="label-sm">prompt</text>
+
+  <!-- Step 2: Claude generates script -->
+  <rect x="220" y="55" width="180" height="80" class="box" fill="#e8a838" stroke="#c08820"/>
+  <text x="310" y="82" class="box-title">Claude Opus</text>
+  <text x="310" y="100" class="box-sub">分析任务 → 选择模式</text>
+  <text x="310" y="115" class="box-sub">→ 生成 JS 编排脚本</text>
+
+  <!-- Arrow 2 -->
+  <path d="M400,95 L450,95" class="arrow"/>
+  <text x="425" y="87" class="label-sm">JS 脚本</text>
+
+  <!-- Step 3: Runtime -->
+  <rect x="450" y="50" width="180" height="90" class="box" fill="#0a7c2e" stroke="#067022"/>
+  <text x="540" y="78" class="box-title">Workflow Runtime</text>
+  <text x="540" y="96" class="box-sub">后台执行脚本</text>
+  <text x="540" y="111" class="box-sub">管理并发 / 恢复 / 预算</text>
+  <text x="540" y="126" class="box-sub">会话保持响应</text>
+
+  <!-- Arrow 3: fan-out -->
+  <path d="M540,140 L540,170" class="arrow"/>
+  <path d="M540,170 L180,200" class="arrow"/>
+  <path d="M540,170 L380,200" class="arrow"/>
+  <path d="M540,170 L540,200" class="arrow"/>
+  <path d="M540,170 L700,200" class="arrow"/>
+  <text x="540" y="165" class="label-sm">spawn agents</text>
+
+  <!-- Agent 1 -->
+  <rect x="110" y="200" width="140" height="100" class="agent-box"/>
+  <rect x="120" y="210" width="120" height="18" class="ctx"/>
+  <text x="180" y="224" class="label-sm">独立上下文窗口</text>
+  <text x="180" y="250" class="label" font-weight="600">Agent 1</text>
+  <text x="180" y="265" class="label-sm">Spec Writer</text>
+  <text x="180" y="280" class="label-sm">model: opus</text>
+
+  <!-- Agent 2 -->
+  <rect x="310" y="200" width="140" height="100" class="agent-box"/>
+  <rect x="320" y="210" width="120" height="18" class="ctx"/>
+  <text x="380" y="224" class="label-sm">独立上下文窗口</text>
+  <text x="380" y="250" class="label" font-weight="600">Agent 2</text>
+  <text x="380" y="265" class="label-sm">Builder</text>
+  <text x="380" y="280" class="label-sm">model: sonnet</text>
+
+  <!-- Agent 3 -->
+  <rect x="470" y="200" width="140" height="100" class="agent-box"/>
+  <rect x="480" y="210" width="120" height="18" class="ctx"/>
+  <text x="540" y="224" class="label-sm">独立上下文窗口</text>
+  <text x="540" y="250" class="label" font-weight="600">Agent 3</text>
+  <text x="540" y="265" class="label-sm">Reviewer</text>
+  <text x="540" y="280" class="label-sm">model: sonnet</text>
+
+  <!-- Agent N -->
+  <rect x="630" y="200" width="140" height="100" class="agent-box"/>
+  <rect x="640" y="210" width="120" height="18" class="ctx"/>
+  <text x="700" y="224" class="label-sm">独立上下文窗口</text>
+  <text x="700" y="250" class="label" font-weight="600">Agent N</text>
+  <text x="700" y="265" class="label-sm">Verifier</text>
+  <text x="700" y="280" class="label-sm">model: haiku</text>
+
+  <!-- Dots between agent 1 and 2 -->
+  <text x="275" y="255" fill="#999" font-size="18">...</text>
+
+  <!-- Results arrow back -->
+  <path d="M180,300 L180,340 Q180,355 195,355 L790,355 Q810,355 810,340 L810,95 Q810,80 795,80 L640,80" class="arrow-d"/>
+  <path d="M380,300 L380,340 Q380,355 395,355" class="arrow-d"/>
+  <path d="M540,300 L540,340 Q540,355 555,355" class="arrow-d"/>
+  <path d="M700,300 L700,340 Q700,355 715,355" class="arrow-d"/>
+  <text x="700" y="375" class="label-sm">结果存在脚本变量中，不进入 Claude 上下文</text>
+
+  <!-- Final result -->
+  <rect x="650" y="55" width="130" height="40" rx="8" fill="#f0f4ff" stroke="#4f97ff" stroke-width="1.5"/>
+  <text x="715" y="73" class="label" font-weight="600">最终结果</text>
+  <text x="715" y="87" class="label-sm">返回用户会话</text>
+
+  <!-- Annotations -->
+  <rect x="30" y="390" width="820" height="24" rx="4" fill="#f5f5f5"/>
+  <text x="440" y="407" text-anchor="middle" fill="#888" font-size="11">关键：中间结果在脚本变量 → 不占 Claude 上下文 → 可扩展到数百 agent | 每个 agent 独立上下文 → 消除偷懒/偏好/漂移</text>
+</svg>

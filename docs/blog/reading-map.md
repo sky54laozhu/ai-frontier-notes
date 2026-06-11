@@ -15,6 +15,7 @@
 | | 05 | [Token 经济学](zh/05-token-optimization.md) | Claude Code 全流程开发的成本优化手册 |
 | | 06 | [Claude Code 卡顿排查](zh/06-claude-code-stuck-guide.md) | 六大根因 + 诊断决策树 + 恢复工具箱 |
 | | 07 | [模型编排实战](zh/07-model-orchestration.md) | 让正确的模型在正确的阶段自动上场 |
+| | 08 | [Dynamic Workflows 实战](zh/08-dynamic-workflows.md) | 从手写编排到 Claude 自己编排 |
 
 ## English · Reading Order
 
@@ -27,6 +28,7 @@
 | | 05 | [Token Economics](en/05-token-optimization.md) | Cost optimization playbook for full-lifecycle Claude Code dev |
 | | 06 | [Claude Code Stuck Guide](en/06-claude-code-stuck-guide.md) | Six root causes + diagnosis flowchart + recovery toolkit |
 | | 07 | [Model Orchestration](en/07-model-orchestration.md) | Putting the right model on the right phase, automatically |
+| | 08 | [Dynamic Workflows](en/08-dynamic-workflows.md) | From hand-written orchestration to Claude writing its own |
 
 ## 按"我想了解 X"反查
 
@@ -66,6 +68,15 @@
 - **脚本编排 LDD 流水线**：07 § 第三层
 - **OpenRouter / LiteLLM**：07 § 第二层
 - **模型编排工具对比**：07 § 第二层
+- **Dynamic Workflows 是什么**：08
+- **ultracode 怎么用**：08 § 三种启动方式
+- **六大编排模式**：08 § 六大编排模式
+- **Workflow 怎么结合 LDD**：08 § 实战一
+- **对抗验证怎么做**：08 § 实战一 Step 3
+- **并行 Build + worktree**：08 § 实战一 Step 4
+- **Workflow 怎么保存复用**：08 § 实战一 Step 5
+- **Workflow vs Shell 编排对比**：08 § 性能与成本
+- **pipeline vs parallel 怎么选**：08 § 实战一 Step 4
 
 ## 系列说明
 

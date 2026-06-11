@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" font-family="-apple-system, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif" font-size="13" role="img" aria-labelledby="t-cc d-cc">
+  <title id="t-cc">Shell 编排 vs Dynamic Workflows</title>
+  <desc id="d-cc">左侧 Shell 编排：人写脚本、串行为主、单 agent review。右侧 Dynamic Workflows：Claude 写脚本、原生并行、多 agent 对抗验证</desc>
+  <style>
+    .col-header { fill: #fff; font-weight: 700; font-size: 14px; text-anchor: middle; }
+    .row-label { fill: #1a2233; font-weight: 600; font-size: 12px; }
+    .cell { fill: #555; font-size: 11px; }
+    .cell-em { fill: #1a2233; font-weight: 600; font-size: 11px; }
+    .good { fill: #0a7c2e; }
+    .bad { fill: #c75050; }
+    .neutral { fill: #666; }
+    .divider { stroke: #ddd; stroke-width: 1; }
+    .vs-circle { fill: #e8a838; }
+    .vs-text { fill: #fff; font-weight: 700; font-size: 14px; text-anchor: middle; }
+  </style>
+
+  <rect x="0" y="0" width="880" height="400" fill="#fafbfc" rx="8"/>
+  <text x="440" y="30" text-anchor="middle" fill="#1a2233" font-size="16" font-weight="600">Shell 编排 vs Dynamic Workflows — 全方位对比</text>
+
+  <!-- Left column header -->
+  <rect x="30" y="50" width="380" height="36" rx="8" fill="#666"/>
+  <text x="220" y="74" class="col-header">Shell 编排 (07 篇 ldd-loop.sh)</text>
+
+  <!-- Right column header -->
+  <rect x="470" y="50" width="380" height="36" rx="8" fill="#3a7bd5"/>
+  <text x="660" y="74" class="col-header">Dynamic Workflows (08 篇)</text>
+
+  <!-- VS circle -->
+  <circle cx="440" cy="68" r="18" class="vs-circle"/>
+  <text x="440" y="73" class="vs-text">VS</text>
+
+  <!-- Row backgrounds -->
+  <rect x="30" y="96" width="820" height="36" fill="#f5f7fa" rx="4"/>
+  <rect x="30" y="168" width="820" height="36" fill="#f5f7fa" rx="4"/>
+  <rect x="30" y="240" width="820" height="36" fill="#f5f7fa" rx="4"/>
+  <rect x="30" y="312" width="820" height="36" fill="#f5f7fa" rx="4"/>
+
+  <!-- Divider -->
+  <line x1="440" y1="90" x2="440" y2="360" class="divider" stroke-dasharray="4 3"/>
+
+  <!-- Row 1: 编排逻辑 -->
+  <text x="45" y="118" class="row-label">编排逻辑</text>
+  <text x="180" y="118" class="cell bad">人类手写 Bash 脚本</text>
+  <text x="485" y="118" class="cell good">Claude 按需生成 JS 脚本</text>
+
+  <!-- Row 2: 修改成本 -->
+  <text x="45" y="150" class="row-label">修改成本</text>
+  <text x="180" y="150" class="cell bad">改 Bash 代码，需要 Shell 知识</text>
+  <text x="485" y="150" class="cell good">改自然语言描述，重新生成</text>
+
+  <!-- Row 3: 并行能力 -->
+  <text x="45" y="186" class="row-label">并行能力</text>
+  <text x="180" y="186" class="cell bad">串行为主，并行需大量代码</text>
+  <text x="485" y="186" class="cell good">原生 parallel() / pipeline()，最多 16 并发</text>
+
+  <!-- Row 4: Review 质量 -->
+  <text x="45" y="218" class="row-label">Review 质量</text>
+  <text x="180" y="218" class="cell neutral">单 Agent 审查，有 self-preferential bias</text>
+  <text x="485" y="218" class="cell good">多视角 + 对抗验证，结构性消除偏差</text>
+
+  <!-- Row 5: 模型路由 -->
+  <text x="45" y="254" class="row-label">模型路由</text>
+  <text x="180" y="254" class="cell neutral">--model flag 按阶段切</text>
+  <text x="485" y="254" class="cell good">{ model: 'opus' } 按 agent 切</text>
+
+  <!-- Row 6: 隔离 -->
+  <text x="45" y="286" class="row-label">文件隔离</text>
+  <text x="180" y="286" class="cell bad">需手动管理 git 分支</text>
+  <text x="485" y="286" class="cell good">{ isolation: 'worktree' } 自动隔离</text>
+
+  <!-- Row 7: 可恢复性 -->
+  <text x="45" y="322" class="row-label">可恢复性</text>
+  <text x="180" y="322" class="cell bad">失败从头来</text>
+  <text x="485" y="322" class="cell good">同 session 内可恢复，已完成走缓存</text>
+
+  <!-- Row 8: Token 成本 -->
+  <text x="45" y="354" class="row-label">Token 成本</text>
+  <text x="180" y="354" class="cell good">较低（5 个串行 agent）</text>
+  <text x="485" y="354" class="cell neutral">较高（N 个并行 + 对抗验证 agent）</text>
+
+  <!-- Bottom summary -->
+  <rect x="30" y="370" width="820" height="24" rx="4" fill="#fff8e1"/>
+  <text x="440" y="387" text-anchor="middle" fill="#8d6e00" font-size="11" font-weight="600">核心 trade-off：Dynamic Workflows 用更多 Token 换取更短墙钟时间 + 更高结果可信度</text>
+</svg>

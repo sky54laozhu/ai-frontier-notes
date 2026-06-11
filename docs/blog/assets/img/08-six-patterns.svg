@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" font-family="-apple-system, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif" font-size="13" role="img" aria-labelledby="t-sp d-sp">
+  <title id="t-sp">六大编排模式速查</title>
+  <desc id="d-sp">Dynamic Workflows 的六种标准编排模式：Classify-and-act、Fan-out-and-synthesize、Adversarial Verification、Generate-and-filter、Tournament、Loop-until-done</desc>
+  <style>
+    .card { fill: #fff; stroke: #ddd; stroke-width: 1.5; rx: 10; }
+    .card:hover { stroke: #4f97ff; }
+    .card-title { fill: #1a2233; font-weight: 700; font-size: 13px; }
+    .card-en { fill: #888; font-weight: 400; font-size: 10px; }
+    .card-desc { fill: #555; font-size: 10px; }
+    .mini { fill: #4f97ff; font-size: 9px; text-anchor: middle; }
+    .mini-box { fill: #eef4ff; stroke: #b0c8f0; stroke-width: 1; rx: 4; }
+    .mini-arr { stroke: #4f97ff; stroke-width: 1.2; fill: none; marker-end: url(#ma); }
+    .tag { rx: 6; }
+    .tag-text { fill: #fff; font-weight: 600; font-size: 9px; text-anchor: middle; }
+  </style>
+  <defs>
+    <marker id="ma" markerWidth="6" markerHeight="5" refX="6" refY="2.5" orient="auto"><polygon points="0 0, 6 2.5, 0 5" fill="#4f97ff"/></marker>
+  </defs>
+
+  <rect x="0" y="0" width="900" height="480" fill="#fafbfc" rx="8"/>
+  <text x="450" y="30" text-anchor="middle" fill="#1a2233" font-size="16" font-weight="600">Dynamic Workflows 六大编排模式</text>
+
+  <!-- Row 1 -->
+  <!-- 1. Classify-and-act -->
+  <rect x="20" y="50" width="275" height="185" class="card"/>
+  <rect x="20" y="50" width="275" height="32" rx="10" fill="#4f97ff"/>
+  <text x="35" y="71" class="card-title" fill="#fff">1. 分类-执行</text>
+  <text x="160" y="71" class="card-en" fill="rgba(255,255,255,.8)">Classify-and-act</text>
+  <text x="35" y="100" class="card-desc">分类 agent 判断类型 → 路由到不同处理 agent</text>
+  <!-- mini diagram -->
+  <rect x="80" y="115" width="50" height="22" class="mini-box"/><text x="105" y="130" class="mini">分类器</text>
+  <path d="M130,126 L155,110" class="mini-arr"/><rect x="155" y="100" width="50" height="18" class="mini-box"/><text x="180" y="113" class="mini">Bug 修复</text>
+  <path d="M130,126 L155,130" class="mini-arr"/><rect x="155" y="122" width="50" height="18" class="mini-box"/><text x="180" y="135" class="mini">需求分析</text>
+  <path d="M130,126 L155,150" class="mini-arr"/><rect x="155" y="144" width="50" height="18" class="mini-box"/><text x="180" y="157" class="mini">问答</text>
+  <rect x="30" y="175" width="80" height="18" class="tag" fill="#0a7c2e"/><text x="70" y="188" class="tag-text">工单分诊</text>
+  <rect x="120" y="175" width="80" height="18" class="tag" fill="#0a7c2e"/><text x="160" y="188" class="tag-text">模型路由</text>
+  <text x="35" y="220" class="card-desc">适用：输入类型多样，处理逻辑因类型而异</text>
+
+  <!-- 2. Fan-out-and-synthesize -->
+  <rect x="310" y="50" width="275" height="185" class="card"/>
+  <rect x="310" y="50" width="275" height="32" rx="10" fill="#e8a838"/>
+  <text x="325" y="71" class="card-title" fill="#fff">2. 扇出-综合</text>
+  <text x="445" y="71" class="card-en" fill="rgba(255,255,255,.8)">Fan-out-and-synthesize</text>
+  <text x="325" y="100" class="card-desc">拆 N 个子任务 → 并行执行 → barrier → 综合</text>
+  <!-- mini diagram -->
+  <rect x="345" y="115" width="40" height="20" class="mini-box"/><text x="365" y="129" class="mini">任务</text>
+  <path d="M385,125 L415,110" class="mini-arr"/>
+  <path d="M385,125 L415,125" class="mini-arr"/>
+  <path d="M385,125 L415,140" class="mini-arr"/>
+  <rect x="415" y="102" width="30" height="16" class="mini-box"/><text x="430" y="114" class="mini">A1</text>
+  <rect x="415" y="118" width="30" height="16" class="mini-box"/><text x="430" y="130" class="mini">A2</text>
+  <rect x="415" y="134" width="30" height="16" class="mini-box"/><text x="430" y="146" class="mini">A3</text>
+  <line x1="455" y1="110" x2="465" y2="110" class="mini-arr" style="marker-end:none"/>
+  <line x1="455" y1="126" x2="465" y2="126" class="mini-arr" style="marker-end:none"/>
+  <line x1="455" y1="142" x2="465" y2="142" class="mini-arr" style="marker-end:none"/>
+  <rect x="465" y="112" width="10" height="26" fill="#e8a838" rx="2"/>
+  <text x="470" y="160" class="mini">barrier</text>
+  <path d="M475,125 L505,125" class="mini-arr"/>
+  <rect x="505" y="115" width="40" height="22" class="mini-box"/><text x="525" y="130" class="mini">综合</text>
+  <rect x="320" y="175" width="80" height="18" class="tag" fill="#c08820"/><text x="360" y="188" class="tag-text">代码库探索</text>
+  <rect x="410" y="175" width="80" height="18" class="tag" fill="#c08820"/><text x="450" y="188" class="tag-text">批量迁移</text>
+  <text x="325" y="220" class="card-desc">适用：子任务互相独立，最后需要全局视图</text>
+
+  <!-- 3. Adversarial Verification -->
+  <rect x="600" y="50" width="280" height="185" class="card"/>
+  <rect x="600" y="50" width="280" height="32" rx="10" fill="#c75050"/>
+  <text x="615" y="71" class="card-title" fill="#fff">3. 对抗验证</text>
+  <text x="730" y="71" class="card-en" fill="rgba(255,255,255,.8)">Adversarial Verification</text>
+  <text x="615" y="100" class="card-desc">每个发现 → 3 个独立 agent 尝试反驳 → 投票</text>
+  <!-- mini diagram -->
+  <rect x="640" y="115" width="45" height="20" class="mini-box"/><text x="663" y="129" class="mini">发现</text>
+  <path d="M685,125 L715,110" class="mini-arr"/>
+  <path d="M685,125 L715,125" class="mini-arr"/>
+  <path d="M685,125 L715,140" class="mini-arr"/>
+  <rect x="715" y="102" width="40" height="16" rx="4" fill="#ffe0e0" stroke="#c75050"/><text x="735" y="114" class="mini" fill="#c75050">反驳</text>
+  <rect x="715" y="118" width="40" height="16" rx="4" fill="#ffe0e0" stroke="#c75050"/><text x="735" y="130" class="mini" fill="#c75050">反驳</text>
+  <rect x="715" y="134" width="40" height="16" rx="4" fill="#e0ffe0" stroke="#0a7c2e"/><text x="735" y="146" class="mini" fill="#0a7c2e">确认</text>
+  <path d="M765,125 L795,125" class="mini-arr"/>
+  <rect x="795" y="115" width="50" height="22" class="mini-box"/><text x="820" y="130" class="mini">2/3 投票</text>
+  <rect x="610" y="175" width="80" height="18" class="tag" fill="#c75050"/><text x="650" y="188" class="tag-text">安全审查</text>
+  <rect x="700" y="175" width="80" height="18" class="tag" fill="#c75050"/><text x="740" y="188" class="tag-text">事实验证</text>
+  <text x="615" y="220" class="card-desc">适用：需要高置信度，消除单 agent 偏好</text>
+
+  <!-- Row 2 -->
+  <!-- 4. Generate-and-filter -->
+  <rect x="20" y="255" width="275" height="185" class="card"/>
+  <rect x="20" y="255" width="275" height="32" rx="10" fill="#7c4dff"/>
+  <text x="35" y="276" class="card-title" fill="#fff">4. 生成-过滤</text>
+  <text x="165" y="276" class="card-en" fill="rgba(255,255,255,.8)">Generate-and-filter</text>
+  <text x="35" y="305" class="card-desc">大量生成候选 → 评分 → 去重 → 保留最优</text>
+  <!-- mini diagram -->
+  <rect x="55" y="320" width="40" height="18" class="mini-box"/><text x="75" y="333" class="mini">生成</text>
+  <path d="M95,329 L115,329" class="mini-arr"/>
+  <rect x="115" y="315" width="10" height="28" fill="#7c4dff" rx="2"/>
+  <text x="105" y="355" class="mini" fill="#7c4dff">30 个</text>
+  <path d="M125,329 L145,329" class="mini-arr"/>
+  <rect x="145" y="320" width="40" height="18" class="mini-box"/><text x="165" y="333" class="mini">评分</text>
+  <path d="M185,329 L205,329" class="mini-arr"/>
+  <rect x="205" y="320" width="40" height="18" class="mini-box"/><text x="225" y="333" class="mini">Top 3</text>
+  <rect x="30" y="380" width="80" height="18" class="tag" fill="#7c4dff"/><text x="70" y="393" class="tag-text">API 命名</text>
+  <rect x="120" y="380" width="80" height="18" class="tag" fill="#7c4dff"/><text x="160" y="393" class="tag-text">方案探索</text>
+  <text x="35" y="425" class="card-desc">适用：创意型任务，质量需要从量变到质变</text>
+
+  <!-- 5. Tournament -->
+  <rect x="310" y="255" width="275" height="185" class="card"/>
+  <rect x="310" y="255" width="275" height="32" rx="10" fill="#00897b"/>
+  <text x="325" y="276" class="card-title" fill="#fff">5. 锦标赛</text>
+  <text x="420" y="276" class="card-en" fill="rgba(255,255,255,.8)">Tournament</text>
+  <text x="325" y="305" class="card-desc">N 个 agent 各自尝试 → 两两对比 → 选最优</text>
+  <!-- mini diagram: bracket -->
+  <rect x="345" y="315" width="35" height="16" class="mini-box"/><text x="363" y="327" class="mini">A</text>
+  <rect x="345" y="340" width="35" height="16" class="mini-box"/><text x="363" y="352" class="mini">B</text>
+  <path d="M380,323 L410,333" class="mini-arr"/>
+  <path d="M380,348 L410,338" class="mini-arr"/>
+  <rect x="410" y="325" width="40" height="20" class="mini-box"/><text x="430" y="339" class="mini">A vs B</text>
+  <rect x="345" y="365" width="35" height="16" class="mini-box"/><text x="363" y="377" class="mini">C</text>
+  <path d="M450,335 L480,350" class="mini-arr"/>
+  <path d="M380,373 L480,355" class="mini-arr"/>
+  <rect x="480" y="340" width="55" height="22" class="mini-box"/><text x="508" y="355" class="mini">Winner</text>
+  <rect x="320" y="380" width="80" height="18" class="tag" fill="#00897b"/><text x="360" y="393" class="tag-text">方案选型</text>
+  <rect x="410" y="380" width="80" height="18" class="tag" fill="#00897b"/><text x="450" y="393" class="tag-text">算法竞选</text>
+  <text x="325" y="425" class="card-desc">适用：多方案竞争，两两比较比绝对打分更可靠</text>
+
+  <!-- 6. Loop-until-done -->
+  <rect x="600" y="255" width="280" height="185" class="card"/>
+  <rect x="600" y="255" width="280" height="32" rx="10" fill="#37474f"/>
+  <text x="615" y="276" class="card-title" fill="#fff">6. 循环到完成</text>
+  <text x="740" y="276" class="card-en" fill="rgba(255,255,255,.8)">Loop-until-done</text>
+  <text x="615" y="305" class="card-desc">持续生成 agent → 直到停止条件 → 收敛</text>
+  <!-- mini diagram: loop -->
+  <rect x="640" y="320" width="45" height="20" class="mini-box"/><text x="663" y="334" class="mini">Finder</text>
+  <path d="M685,330 L715,330" class="mini-arr"/>
+  <rect x="715" y="320" width="55" height="20" class="mini-box"/><text x="743" y="334" class="mini">新发现?</text>
+  <path d="M770,330 L800,330" class="mini-arr"/>
+  <text x="815" y="334" class="mini" fill="#0a7c2e" font-weight="700">Done</text>
+  <path d="M743,340 Q743,365 690,365 Q640,365 640,340" class="mini-arr" style="stroke:#37474f"/>
+  <text x="690" y="378" class="mini" fill="#37474f">2 轮无新发现 → 停止</text>
+  <rect x="610" y="390" width="80" height="18" class="tag" fill="#37474f"/><text x="650" y="403" class="tag-text">Bug 挖掘</text>
+  <rect x="700" y="390" width="80" height="18" class="tag" fill="#37474f"/><text x="740" y="403" class="tag-text">规则提炼</text>
+  <text x="615" y="425" class="card-desc">适用：工作量未知，需要穷尽式搜索</text>
+
+  <!-- Bottom annotation -->
+  <text x="450" y="465" text-anchor="middle" fill="#888" font-size="11">六个模式可自由组合 — Fan-out + Adversarial Verify 是最常用的组合</text>
+</svg>
