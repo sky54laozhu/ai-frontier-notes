@@ -81,5 +81,5 @@
 
   <!-- Bottom summary -->
   <rect x="30" y="370" width="820" height="24" rx="4" fill="#fff8e1"/>
-  <text x="440" y="387" text-anchor="middle" fill="#8d6e00" font-size="11" font-weight="600">核心 trade-off：Dynamic Workflows 用更多 Token 换取更短墙钟时间 + 更高结果可信度</text>
+  <text x="440" y="387" text-anchor="middle" fill="#8d6e00" font-size="11" font-weight="600">核心 trade-off：Dynamic Workflows 用更多 Token 换取更短实际耗时 + 更高结果可信度</text>
 </svg>

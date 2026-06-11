@@ -592,14 +592,14 @@ await agent('编写测试覆盖 spec 中的 7 个验收条件',
 | 每个 item 独立流过所有阶段 | ✅ | |
 | 需要所有结果一起才能继续 | | ✅ |
 | 需要跨 item 去重/合并 | | ✅ |
-| 想最大化墙钟效率 | ✅ | |
+| 想最大化实际耗时效率 | ✅ | |
 | 阶段 N 需要阶段 N-1 全部完成 | | ✅（barrier） |
 
 **口诀：默认用 `pipeline`，只有需要 barrier（跨 item 上下文）时才用 `parallel`。**
 
-`pipeline` 不等待：Item A 可以在 stage 3 而 Item B 还在 stage 1。墙钟时间 = 最慢的单 item 链。
+`pipeline` 不等待：Item A 可以在 stage 3 而 Item B 还在 stage 1。实际耗时 = 最慢的单 item 链。
 
-`parallel` 是 barrier：等所有 thunk 完成才返回。墙钟时间 = 最慢的那个 thunk。
+`parallel` 是 barrier：等所有 thunk 完成才返回。实际耗时 = 最慢的那个 thunk。
 
 #### worktree 隔离：什么时候用？
 
@@ -609,7 +609,7 @@ await agent('编写测试覆盖 spec 中的 7 个验收条件',
 
 #### 并行 Build 的效果对比
 
-串行 Build（Step 1）vs 并行 Build（Step 4）的墙钟时间：
+串行 Build（Step 1）vs 并行 Build（Step 4）的实际耗时：
 
 ```
 Step 1 串行 Build（1 个 agent）:
@@ -626,7 +626,7 @@ Step 4 并行 Build（8 个 agent，4 个并行）:
   总计: ~15 分钟（节省 35%）
 ```
 
-Token 总量几乎不变（每个 task 做的工作量一样），但墙钟时间少了三分之一。**并行不省 Token，省的是你等待的时间。**
+Token 总量几乎不变（每个 task 做的工作量一样），但实际耗时少了三分之一。**并行不省 Token，省的是你等待的时间。**
 
 ### Step 5：保存和复用
 
@@ -823,7 +823,7 @@ await agent(
 | 输出格式 | 自由文本 | 结构化 Schema（可机器处理） |
 | 误报率 | 较高（单 agent 倾向多报） | 较低（对抗验证过滤，示例中过滤了 2/7） |
 | Token 消耗 | 低（~20k） | 高（~150-200k） |
-| 墙钟时间 | ~3 分钟 | ~8 分钟（并行抵消了 agent 数增加） |
+| 实际耗时 | ~3 分钟 | ~8 分钟（并行抵消了 agent 数增加） |
 | 适用场景 | 日常 PR | 关键发布、安全敏感代码、上线前终审 |
 
 ### 什么时候值得 5-10x 的 Token？
@@ -1183,7 +1183,7 @@ while (budget.total && budget.remaining() > 30000) {
 
 以 LinkShort 的 LDD 全流程为例（估算）：
 
-| 方案 | Agent 数 | 预估 Token | 预估成本 | 墙钟时间 |
+| 方案 | Agent 数 | 预估 Token | 预估成本 | 实际耗时 |
 |------|---------|-----------|---------|---------|
 | 手动 prompt（04 篇） | 5 次交互 | ~100k | ~$0.50 | ~50 分钟（含人工） |
 | Shell 编排（07 篇） | 5 个 `claude -p` | ~120k | ~$0.60 | ~40 分钟（全自动） |
@@ -1191,7 +1191,7 @@ while (budget.total && budget.remaining() > 30000) {
 | DW 对抗验证版（Step 3） | 5 + 3 review + 9 verify | ~300k | ~$1.50 | ~25 分钟 |
 | DW 并行 Build 版（Step 4） | 12+ agents | ~350k | ~$1.75 | ~18 分钟 |
 
-**核心 trade-off：Token 成本换墙钟时间和结果可信度。** 并行 Build 加对抗验证的方案 Token 用量是 Shell 编排的 3 倍，但墙钟时间缩短一半，且发现的问题更准确（误报率更低）。
+**核心 trade-off：Token 成本换实际耗时和结果可信度。** 并行 Build 加对抗验证的方案 Token 用量是 Shell 编排的 3 倍，但实际耗时缩短一半，且发现的问题更准确（误报率更低）。
 
 ## 什么时候不用 Workflow
 
